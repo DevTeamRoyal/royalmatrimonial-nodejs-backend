@@ -27,6 +27,7 @@ const createUserStep1 = (req, res) => {
       try {
         res.json({
           ...result["0"],
+          jsonResponse: JSON.parse(result["0"].jsonResponse),
           status: 200,
         });
       } catch (error) {

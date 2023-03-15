@@ -1,4 +1,4 @@
-const createUserFamilyAbout = require("../services/sp_create_familyAbout");
+const createUserFamilyAbout = require("../controller/sp_create_familyAbout");
 const express = require("express"),
   router = express.Router();
 

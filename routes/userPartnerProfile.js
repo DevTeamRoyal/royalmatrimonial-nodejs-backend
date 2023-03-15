@@ -1,4 +1,4 @@
-const createUserPartnerProfile = require("../services/sp_create_userPartnerPref");
+const createUserPartnerProfile = require("../controller/sp_create_userPartnerPref");
 const express = require("express"),
   router = express.Router();
 

@@ -11,7 +11,7 @@ const executeStoredProcedure = (procedureName, params) => {
           reject(error);
         }
         db.query(
-          "SELECT @v_out AS output, @v_msg AS message",
+          "SELECT @v_out AS output, @v_msg AS message, @v_json AS jsonResponse",
           function (err, rows) {
             if (err) {
               console.error("Error retrieving output parameter: " + err.stack);

@@ -1,4 +1,4 @@
-const createUserLifestyle = require("../services/sp_create_userLifestyle");
+const createUserLifestyle = require("../controller/sp_create_userLifestyle");
 const express = require("express"),
   router = express.Router();
 

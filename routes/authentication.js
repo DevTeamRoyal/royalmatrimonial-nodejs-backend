@@ -1,4 +1,4 @@
-const userSignUpService = require("../services/sp_create_userLogin");
+const userSignUpService = require("../controller/sp_create_userLogin");
 const express = require("express"),
   router = express.Router();
 
