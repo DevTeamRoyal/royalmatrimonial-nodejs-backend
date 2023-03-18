@@ -1,17 +1,15 @@
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-const generateHashPwd = (password) => bcrypt.hashSync(password, saltRounds)
+const generateHashPwd = (password) => bcrypt.hashSync(password, saltRounds);
 
-const checkHashPwd = (password) => {
-  const result = bcrypt.compare(password, hash, function (err, result) {
-    if (err) {
-      console.error("Error while checking the password:", err);
-      return;
-    }
-    return result;
-  });
-  return result;
-};
+const comparePasswords = async (password, hashedPassword) => {
+  try {
+    const match = await bcrypt.compare(password, hashedPassword);
+    return match;
+  } catch (error) {
+    throw new Error("Error comparing passwords");
+  }
+}
 
-module.exports = { generateHashPwd, checkHashPwd };
+module.exports = { generateHashPwd, comparePasswords };

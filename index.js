@@ -7,9 +7,6 @@ require("dotenv").config();
 
 // routers import
 const authentication = require("./routes/authentication");
-const userAbout = require("./routes/userAbout");
-const userFamilyAbout = require("./routes/userFamilyAbout");
-const userLifestyle = require("./routes/userLifestyle");
 const registerUserProfile = require("./routes/registerUserProfile");
 const userPartnerProfile = require("./routes/userPartnerProfile");
 
@@ -31,9 +28,6 @@ app.use(
 // use routers
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/auth", authentication);
-app.use("/userAbout", userAbout);
-app.use("/userFamilyAbout", userFamilyAbout);
-app.use("/userLifestyle", userLifestyle);
 app.use("/registerUser", registerUserProfile);
 app.use("/userPartnerProfile", userPartnerProfile);
 

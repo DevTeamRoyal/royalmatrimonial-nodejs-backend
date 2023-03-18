@@ -24,6 +24,7 @@ const userSignUp = (req, res) => {
         res.json({
           ...result["0"],
           status: 200,
+          jsonResponse: JSON.parse(result["0"].jsonResponse),
           token,
         });
       } catch (error) {

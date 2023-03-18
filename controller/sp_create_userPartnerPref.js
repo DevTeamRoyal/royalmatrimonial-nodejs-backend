@@ -37,7 +37,7 @@ const createUserPartnerPref = (req, res) => {
         res.json({
           ...result["0"],
           status: 200,
-          token,
+          jsonResponse: JSON.parse(result["0"].jsonResponse),
         });
       } catch (error) {
         throw error;

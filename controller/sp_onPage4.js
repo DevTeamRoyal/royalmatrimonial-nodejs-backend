@@ -4,8 +4,8 @@ const createUserStep4 = (req, res) => {
   const values = [
     req.body.actionType,
     req.body.userId,
-    req.body.fathersProfession,
     req.body.mothersProfession,
+    req.body.fathersProfession,
     req.body.sister,
     req.body.brother,
     req.body.gothra,
