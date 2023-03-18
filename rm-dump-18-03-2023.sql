@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
--- Host: localhost    Database: royalmatrimonial
+-- Host: 127.0.0.1    Database: royalmatrimonial
 -- ------------------------------------------------------
--- Server version	8.0.32-0ubuntu0.20.04.2
+-- Server version	8.0.32
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -40,50 +40,6 @@ INSERT INTO `dummy` VALUES (5,'[1, 2]',NULL),(6,'[3, 4]',NULL),(7,'[3]',NULL),(8
 UNLOCK TABLES;
 
 --
--- Table structure for table `tab_user_WAState`
---
-
-DROP TABLE IF EXISTS `tab_user_WAState`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tab_user_WAState` (
-  `isd_mobile` bigint unsigned NOT NULL,
-  `menu_number` int DEFAULT NULL,
-  `state_setDate` datetime DEFAULT CURRENT_TIMESTAMP,
-  `question` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`isd_mobile`),
-  UNIQUE KEY `mobile_UNIQUE` (`isd_mobile`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tab_user_WAState`
---
-
-LOCK TABLES `tab_user_WAState` WRITE;
-/*!40000 ALTER TABLE `tab_user_WAState` DISABLE KEYS */;
-INSERT INTO `tab_user_WAState` VALUES (9149999,4,'2023-03-03 10:55:38','email'),(917087871536,-3,'2023-02-25 15:46:22',''),(919312280091,0,'2023-02-28 11:55:13',''),(919650231035,2,'2023-03-14 00:07:29',''),(919910079085,10202,'2023-03-10 08:22:20',''),(9999999999999,3,'2023-02-19 14:26:06',NULL);
-/*!40000 ALTER TABLE `tab_user_WAState` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`warm`@`localhost`*/ /*!50003 TRIGGER `tab_user_WAState_BEFORE_UPDATE` BEFORE UPDATE ON `tab_user_WAState` FOR EACH ROW BEGIN
-	set NEW.state_setDate=NOW();
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-
---
 -- Table structure for table `tab_user_about`
 --
 
@@ -108,18 +64,18 @@ CREATE TABLE `tab_user_about` (
 
 LOCK TABLES `tab_user_about` WRITE;
 /*!40000 ALTER TABLE `tab_user_about` DISABLE KEYS */;
-INSERT INTO `tab_user_about` VALUES (9,2,'Hi I am this and that','My family .....','my career ......','my education .....'),(11,2,'Hi I am this and that','My family .....','my career ......','my education .....'),(14,3,NULL,NULL,NULL,NULL),(15,2,'Hi I am this and that','My family .....','my career ......','my education .....'),(34,3,NULL,NULL,NULL,NULL),(40,5,NULL,NULL,NULL,NULL),(43,5,NULL,NULL,NULL,NULL),(59,5,'introoo','familyyyy','careerrrr','educationnn'),(60,1,NULL,NULL,NULL,NULL);
+INSERT INTO `tab_user_about` VALUES (9,2,'Hi I am this and that','My family .....','my career ......','my education .....'),(11,2,'Hi I am this and that','My family .....','my career ......','my education .....'),(14,3,NULL,NULL,NULL,NULL),(15,2,'Hi I am this and that','My family .....','my career ......','my education .....'),(34,3,NULL,NULL,NULL,NULL),(40,5,NULL,NULL,NULL,NULL),(43,5,NULL,NULL,NULL,NULL),(59,5,'introoo','familyyyy','careerrrr','educationnn'),(60,1,NULL,NULL,NULL,NULL),(63,2,NULL,NULL,NULL,NULL),(65,1,NULL,NULL,NULL,NULL),(66,1,NULL,NULL,NULL,NULL),(67,1,NULL,NULL,NULL,NULL),(68,2,NULL,NULL,NULL,NULL),(75,2,NULL,NULL,NULL,NULL),(76,1,'I am bad','I am bad','I am bad','I am bad'),(77,1,NULL,NULL,NULL,NULL),(78,2,'du','bu','au','cu');
 /*!40000 ALTER TABLE `tab_user_about` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `tab_user_familyAbout`
+-- Table structure for table `tab_user_familyabout`
 --
 
-DROP TABLE IF EXISTS `tab_user_familyAbout`;
+DROP TABLE IF EXISTS `tab_user_familyabout`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tab_user_familyAbout` (
+CREATE TABLE `tab_user_familyabout` (
   `userid` int NOT NULL,
   `profile_handlername` varchar(100) DEFAULT NULL,
   `Mother` tinyint DEFAULT NULL,
@@ -131,7 +87,7 @@ CREATE TABLE `tab_user_familyAbout` (
   `Family_Income` tinyint DEFAULT NULL,
   `Family_Type` tinyint DEFAULT NULL,
   `family_native_country` int DEFAULT NULL,
-  `family_native_state` tinyint DEFAULT NULL,
+  `family_native_state` int DEFAULT NULL,
   `family_native_city` int DEFAULT NULL,
   `living_with_parents` tinyint DEFAULT NULL,
   PRIMARY KEY (`userid`),
@@ -140,13 +96,13 @@ CREATE TABLE `tab_user_familyAbout` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tab_user_familyAbout`
+-- Dumping data for table `tab_user_familyabout`
 --
 
-LOCK TABLES `tab_user_familyAbout` WRITE;
-/*!40000 ALTER TABLE `tab_user_familyAbout` DISABLE KEYS */;
-INSERT INTO `tab_user_familyAbout` VALUES (40,'Vishal Kumar',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(43,'Krishna Kumar',1,1,1,1,'Malik',1,4,3,1,2,30,1),(59,'Krishna Kumar',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
-/*!40000 ALTER TABLE `tab_user_familyAbout` ENABLE KEYS */;
+LOCK TABLES `tab_user_familyabout` WRITE;
+/*!40000 ALTER TABLE `tab_user_familyabout` DISABLE KEYS */;
+INSERT INTO `tab_user_familyabout` VALUES (40,'Vishal Kumar',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(43,'Krishna Kumar',1,1,1,1,'Malik',1,4,3,1,2,30,1),(59,'Krishna Kumar',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(68,'Sudhanshu',1,2,2,2,'test',2,3,2,2,0,18,2),(75,'Sudhanshu',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(76,'Sudhanshu Singh',7,6,2,2,'Tiger',3,4,2,11,16,2,1),(77,'Sudhanshu Singh',1,1,2,2,'Gothra',1,2,1,0,12,1,1),(78,'PAPASudhanshu Singh',7,6,2,2,'BW',3,3,1,100,12,33,1);
+/*!40000 ALTER TABLE `tab_user_familyabout` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -175,7 +131,7 @@ CREATE TABLE `tab_user_lifestyle` (
 
 LOCK TABLES `tab_user_lifestyle` WRITE;
 /*!40000 ALTER TABLE `tab_user_lifestyle` DISABLE KEYS */;
-INSERT INTO `tab_user_lifestyle` VALUES (8,1,2,2,2,1,'Ram Ram'),(11,2,2,2,2,2,'Ram Ram');
+INSERT INTO `tab_user_lifestyle` VALUES (8,1,2,2,2,1,'Ram Ram'),(11,2,2,2,2,2,'Ram Ram'),(68,NULL,NULL,NULL,NULL,3,NULL),(76,1,1,1,1,1,'krishna'),(77,1,1,1,2,1,'Krishna'),(78,1,1,1,2,1,'Krishna');
 /*!40000 ALTER TABLE `tab_user_lifestyle` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,7 +153,7 @@ CREATE TABLE `tab_user_login` (
   UNIQUE KEY `userid_UNIQUE` (`userid`),
   UNIQUE KEY `mobile_UNIQUE` (`mobile`),
   UNIQUE KEY `emailid_UNIQUE` (`emailid`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -206,18 +162,18 @@ CREATE TABLE `tab_user_login` (
 
 LOCK TABLES `tab_user_login` WRITE;
 /*!40000 ALTER TABLE `tab_user_login` DISABLE KEYS */;
-INSERT INTO `tab_user_login` VALUES (9,299999,'abcd2@def.comm','ced-ferg','N',91),(10,39999,'abcd3@def.comm','ced-ferg','N',91),(11,49999,'abcd4@def.comm','ced-ferg','N',91),(14,7087871536,'deff','pwdddd','N',91),(15,19999999,'1deff','pwdddd','N',91),(34,29999999,'2deff','pwdddd','N',91),(36,39999999,'3deff','pwdddd','N',91),(40,49999999,'4deff','pwdddd','N',91),(43,6999999,'royalmatrimonial@gmail.com','pwdddd','N',91),(49,69999999,'6deff','pwdddd','N',91),(52,9999999999,'xyzzz@gmaill.comm','abcdef','N',999),(55,9910079085,'arunpruthi@yahoo.com',NULL,'N',91),(59,9312280091,NULL,NULL,NULL,91),(60,9650231035,'pruthi.atul@gmail.com',NULL,'N',91),(61,0,'arunnn@gmailll.commm','defdefdef','N',91);
+INSERT INTO `tab_user_login` VALUES (9,299999,'abcd2@def.comm','ced-ferg','N',91),(10,39999,'abcd3@def.comm','ced-ferg','N',91),(11,49999,'abcd4@def.comm','ced-ferg','N',91),(14,7087871536,'deff','pwdddd','N',91),(15,19999999,'1deff','pwdddd','N',91),(34,29999999,'2deff','pwdddd','N',91),(36,39999999,'3deff','pwdddd','N',91),(40,49999999,'4deff','pwdddd','N',91),(43,6999999,'royalmatrimonial@gmail.com','pwdddd','N',91),(49,69999999,'6deff','pwdddd','N',91),(52,9999999999,'xyzzz@gmaill.comm','abcdef','N',999),(55,9910079085,'arunpruthi@yahoo.com',NULL,'N',91),(59,9312280091,NULL,NULL,NULL,91),(60,9650231035,'pruthi.atul@gmail.com',NULL,'N',91),(61,0,'arunnn@gmailll.commm','defdefdef','N',91),(62,1234567899,'sudhanshu@gnail.com','$2b$10$ET/dwCtrc0IPll0T90/TDuATiVHHjJ1PsgQIHSv5o7MB1L/4UfJl6','N',91),(63,2222211111,'sidha@gmail.com','$2b$10$fee0RINB4XIJDh/KYvFQhenMjkQ5g32Z.u9SP8ct1lRVOoRXhrp/S','N',91),(65,7878787877,'test@gmail.com','$2b$10$aVBsvykfHWjugQoyx6qcOeP/1W2DvsKsHnKvNYzrHVhQ6z6BkbCX.','N',91),(66,9540494429,'test1@gmail.com','$2b$10$5bma2WKQbtq5RYimerT4jOs9HVLBKiYguNNeXqh4fpyAtPmyrbzZu','N',91),(67,9540494427,'test2@gmail.com','$2b$10$F.06T/2F8zeCL3/u9Gjh8OLvp2dN4tovZxNG/01rKtjy.Iug31OM2','N',91),(68,9540494425,'test3@gmail.com','$2b$10$82afobthcAkrHMQJ7zVSY.3lJDP14en8V5hBND7Tq6Eg5ANlVYfu6','N',91),(69,1122334455,'test@gmail22.com','$2b$10$yyGI.6Ho/Ngc2ldQ5xY9mer2ge9K2ei1IYZWHHE6fNei45tlKiRZ2','N',91),(70,3333333333,'test3@gmail.com3','$2b$10$0amoju87HBe2Hrtuhxiepe0xP721T6OcDvzJ7kPAn6tHKe155iGI.','N',91),(71,1231231231,'test323@gmail.com','$2b$10$zA4Jpf8emNR/EVkmIz4D8eFrin8NqKVhPC6IiBo7Fu8nvA74d8Qbq','N',91),(72,9988998899,'test@gmail.com123','$2b$10$qokEYVjhkAzZtSdXG46NXuzv7ZTygF2C5LzOqKWa2n92yRvPF1FIK','N',91),(73,1234554321,'test222@gmail.com','$2b$10$QqjS.sy1BfRxiYaFsXJelusdzpy8WFw8akJbbvCzZPvYSOWxnGlwu','N',91),(74,112233112233,'t@g.com','$2b$10$Xr6Wn42vrZgrcuYoVAFRoOuNOzZJUWzrMrNRFKdgU2e5k2ds3tS5S','N',91),(75,1231231222,'s@g.com','$2b$10$SmzfHbI3ZdhQ.g6yekzaHuRO1A.9qHQhqWY4MxGCITBhE9YeKbgg2','N',91),(76,4444433333,'hima@gmail.com','$2b$10$xIp0YHO6pezGt0qDF9pUou9o9fY66BeniZM9//4lGCx8wQOFrrQa6','N',91),(77,9999988888,'papa@gmail.com','$2b$10$esJDPbGmF6vivTXcxk6qvuC6flmTDPySJsr4zt.nRLGRsUndd0ov.','N',91),(78,7982631777,'popoye@gmail.com','$2b$10$di4NYtQoXfmwO1MJ0oPfL.ZCulgRwBxXbgSSl7m7s./pJdmesekNq','N',91);
 /*!40000 ALTER TABLE `tab_user_login` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `tab_user_packagePrivacy`
+-- Table structure for table `tab_user_packageprivacy`
 --
 
-DROP TABLE IF EXISTS `tab_user_packagePrivacy`;
+DROP TABLE IF EXISTS `tab_user_packageprivacy`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tab_user_packagePrivacy` (
+CREATE TABLE `tab_user_packageprivacy` (
   `userid` int NOT NULL,
   `user_RM_ID` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
   `user_status` char(1) NOT NULL DEFAULT 'R',
@@ -235,23 +191,23 @@ CREATE TABLE `tab_user_packagePrivacy` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tab_user_packagePrivacy`
+-- Dumping data for table `tab_user_packageprivacy`
 --
 
-LOCK TABLES `tab_user_packagePrivacy` WRITE;
-/*!40000 ALTER TABLE `tab_user_packagePrivacy` DISABLE KEYS */;
-INSERT INTO `tab_user_packagePrivacy` VALUES (11,'RM11','R',2,'2023-04-01 13:44:50',1,'2023-01-29 18:33:20','I','I','P'),(14,'RM14','R',2,'2023-03-02 10:27:54',1,'2023-01-30 13:52:47','P','P','P'),(15,'RM15','R',3,'2023-03-02 10:40:01',1,'2023-01-30 14:14:49','P','P','P'),(34,'RM34','R',1,NULL,1,'2023-01-30 15:10:48','P','P','P'),(36,'RM36','R',1,NULL,1,'2023-01-30 15:13:04','P','P','P'),(40,'RM40','R',1,NULL,1,'2023-01-30 15:18:14','P','P','P'),(49,'RM49','R',1,NULL,1,'2023-01-30 17:41:05','P','P','P'),(52,'RM52','1',1,NULL,0,'2023-02-19 14:06:59','P','P','P'),(54,'RM54','R',1,NULL,1,'2023-02-25 11:53:49','P','P','P'),(55,'RM55','R',1,NULL,1,'2023-02-25 15:48:57','P','P','P'),(56,'RM56','R',1,NULL,1,'2023-02-27 17:25:30','P','P','P'),(57,'RM57','R',1,NULL,1,'2023-02-27 17:38:38','P','P','P'),(59,'RM59','R',1,NULL,1,'2023-02-28 11:50:53','P','P','P'),(60,'RM60','R',1,NULL,1,'2023-02-28 17:18:29','P','P','P'),(61,'RM61','R',1,NULL,1,'2023-03-14 08:07:16','P','P','P');
-/*!40000 ALTER TABLE `tab_user_packagePrivacy` ENABLE KEYS */;
+LOCK TABLES `tab_user_packageprivacy` WRITE;
+/*!40000 ALTER TABLE `tab_user_packageprivacy` DISABLE KEYS */;
+INSERT INTO `tab_user_packageprivacy` VALUES (11,'RM11','R',2,'2023-04-01 13:44:50',1,'2023-01-29 18:33:20','I','I','P'),(14,'RM14','R',2,'2023-03-02 10:27:54',1,'2023-01-30 13:52:47','P','P','P'),(15,'RM15','2',3,'2023-03-02 10:40:01',1,'2023-01-30 14:14:49','P','P','P'),(34,'RM34','R',1,NULL,1,'2023-01-30 15:10:48','P','P','P'),(36,'RM36','R',1,NULL,1,'2023-01-30 15:13:04','P','P','P'),(40,'RM40','R',1,NULL,1,'2023-01-30 15:18:14','P','P','P'),(49,'RM49','R',1,NULL,1,'2023-01-30 17:41:05','P','P','P'),(52,'RM52','1',1,NULL,0,'2023-02-19 14:06:59','P','P','P'),(54,'RM54','R',1,NULL,1,'2023-02-25 11:53:49','P','P','P'),(55,'RM55','R',1,NULL,1,'2023-02-25 15:48:57','P','P','P'),(56,'RM56','R',1,NULL,1,'2023-02-27 17:25:30','P','P','P'),(57,'RM57','R',1,NULL,1,'2023-02-27 17:38:38','P','P','P'),(59,'RM59','R',1,NULL,1,'2023-02-28 11:50:53','P','P','P'),(60,'RM60','R',1,NULL,1,'2023-02-28 17:18:29','P','P','P'),(61,'RM61','R',1,NULL,1,'2023-03-14 08:07:16','P','P','P'),(62,'RM62','R',1,NULL,1,'2023-03-15 10:57:11','P','P','P'),(63,'RM63','R',1,NULL,1,'2023-03-15 16:46:42','P','P','P'),(65,'RM65','R',1,NULL,1,'2023-03-15 17:21:25','P','P','P'),(66,'RM66','R',1,NULL,1,'2023-03-15 17:28:42','P','P','P'),(67,'RM67','R',1,NULL,1,'2023-03-15 17:32:33','P','P','P'),(68,'RM68','4',1,NULL,1,'2023-03-15 17:35:45','P','P','P'),(69,'RM69','R',1,NULL,1,'2023-03-16 16:30:32','P','P','P'),(70,'RM70','R',1,NULL,1,'2023-03-16 16:40:03','P','P','P'),(71,'RM71','R',1,NULL,1,'2023-03-16 17:58:31','P','P','P'),(72,'RM72','R',1,NULL,1,'2023-03-17 11:06:46','P','P','P'),(73,'RM11490','R',1,NULL,1,'2023-03-17 11:30:23','P','P','P'),(74,'RM114A4','R',1,NULL,1,'2023-03-17 11:34:06','P','P','P'),(75,'RM114B8','2',1,NULL,1,'2023-03-17 11:38:47','P','P','P'),(76,'RM124C1D','2',1,NULL,1,'2023-03-17 19:59:08','P','P','P'),(77,'RM124D3A','5',1,NULL,1,'2023-03-18 00:28:12','P','P','P'),(78,'RM124E1C','5',1,NULL,1,'2023-03-18 05:58:05','P','P','P');
+/*!40000 ALTER TABLE `tab_user_packageprivacy` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `tab_user_partnerPref`
+-- Table structure for table `tab_user_partnerpref`
 --
 
-DROP TABLE IF EXISTS `tab_user_partnerPref`;
+DROP TABLE IF EXISTS `tab_user_partnerpref`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tab_user_partnerPref` (
+CREATE TABLE `tab_user_partnerpref` (
   `userid` int unsigned NOT NULL,
   `age_greater_than` tinyint unsigned NOT NULL,
   `age_less_than` tinyint unsigned NOT NULL,
@@ -284,13 +240,13 @@ CREATE TABLE `tab_user_partnerPref` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tab_user_partnerPref`
+-- Dumping data for table `tab_user_partnerpref`
 --
 
-LOCK TABLES `tab_user_partnerPref` WRITE;
-/*!40000 ALTER TABLE `tab_user_partnerPref` DISABLE KEYS */;
-INSERT INTO `tab_user_partnerPref` VALUES (9,30,35,150,155,'[1, 2]','[3, 4]','[101, 102]','[201, 202]',NULL,4,'[1, 2]','[5]','[11, 12, 13]','[14]','[1, 2]','[1, 2]',0,1,1,0,'[6, 7]','[1, 2]',0,0,'[\"height\", \"religion\", \"caste\"]'),(11,35,50,130,155,'[1, 2]','[3, 4]','[101, 102]','[201, 202]','[0]',4,'[1, 2]','[5, 6]','[11, 12, 13]','[14]','[1, 2]','[1, 2]',1,1,1,0,'[6, 7]','[4, 7]',0,0,'[\"height\", \"religion\", \"caste\"]'),(59,30,35,150,155,'[1, 2]','[3, 4]','[101, 102]','[201, 202]','[0]',4,'[1, 2]','[5, 6]','[11, 12, 13]','[14]','[1, 2]','[1, 2]',1,2,3,0,'[6, 7]','[4, 7]',0,3,'[\"height\", \"religion\", \"caste\"]');
-/*!40000 ALTER TABLE `tab_user_partnerPref` ENABLE KEYS */;
+LOCK TABLES `tab_user_partnerpref` WRITE;
+/*!40000 ALTER TABLE `tab_user_partnerpref` DISABLE KEYS */;
+INSERT INTO `tab_user_partnerpref` VALUES (9,30,35,150,155,'[1, 2]','[3, 4]','[101, 102]','[201, 202]',NULL,4,'[1, 2]','[5]','[11, 12, 13]','[14]','[1, 2]','[1, 2]',0,1,1,0,'[6, 7]','[1, 2]',0,0,'[\"height\", \"religion\", \"caste\"]'),(11,35,50,130,155,'[1, 2]','[3, 4]','[101, 102]','[201, 202]','[0]',4,'[1, 2]','[5, 6]','[11, 12, 13]','[14]','[1, 2]','[1, 2]',1,1,1,0,'[6, 7]','[4, 7]',0,0,'[\"height\", \"religion\", \"caste\"]'),(59,30,35,150,155,'[1, 2]','[3, 4]','[101, 102]','[201, 202]','[0]',4,'[1, 2]','[5, 6]','[11, 12, 13]','[14]','[1, 2]','[1, 2]',1,2,3,0,'[6, 7]','[4, 7]',0,3,'[\"height\", \"religion\", \"caste\"]');
+/*!40000 ALTER TABLE `tab_user_partnerpref` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -340,7 +296,7 @@ CREATE TABLE `tab_user_profile` (
 
 LOCK TABLES `tab_user_profile` WRITE;
 /*!40000 ALTER TABLE `tab_user_profile` DISABLE KEYS */;
-INSERT INTO `tab_user_profile` VALUES (9,'M','ABCD DEFG',2,1,'1977-08-15 00:00:00',135,2,3,101,101,4,4,1,12,5,14,2,2,1,1,1,5,7,7,'2023-03-05 05:54:32','folder9',NULL),(11,'F','ABCD DEFG',2,1,'1989-08-16 00:00:00',151,1,3,101,201,4,5,1,11,5,14,1,1,1,1,1,6,7,2,'2023-03-05 05:51:09','folder',NULL),(14,'F','A333 B333',1,1,'1989-08-16 00:00:00',153,1,4,102,202,80,6,2,12,5,14,1,1,1,1,1,1,6,6,'2023-03-12 13:43:03','folder3',NULL),(15,'F','A444 B444',2,1,'1989-08-16 00:00:00',151,5,4,102,201,80,7,2,11,5,14,1,2,1,1,1,4,7,7,'2023-03-12 14:28:28','folder4',NULL),(34,'F','ABCD DEFG',1,1,'1989-08-16 00:00:00',151,1,3,101,202,4,8,1,12,5,14,2,2,1,1,1,1,7,2,'2023-03-12 12:32:22','folder',NULL),(40,'M','Vimal',20,NULL,'1980-05-05 00:00:00',155,2,4,102,201,1,5,NULL,NULL,1,NULL,2,NULL,1,1,1,1,NULL,NULL,'2023-03-09 17:32:18',NULL,NULL),(43,'F','Rama Pal yadav',1,NULL,'1989-05-28 00:00:00',153,1,3,101,202,3,5,2,11,5,14,1,1,1,1,1,1,6,1,'2023-03-06 07:56:36','folder1',NULL),(52,NULL,'M',2,NULL,'1989-08-16 00:00:00',154,1,3,101,202,5,8,NULL,12,5,14,1,2,1,1,1,2,7,1,'2023-03-05 05:51:08','folder2',NULL),(59,'M','Gaurav Chabbbra',20,NULL,'1980-05-05 00:00:00',155,NULL,NULL,NULL,NULL,NULL,NULL,NULL,13,7,14,2,1,1,1,1,3,6,1,'2023-03-05 05:51:09','folder3',NULL),(60,'m','atul pruthi',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,0,1,2,3,NULL,NULL,NULL,'2023-03-11 05:37:47',NULL,NULL);
+INSERT INTO `tab_user_profile` VALUES (9,'M','ABCD DEFG',2,1,'1977-08-15 00:00:00',135,2,3,101,101,4,4,1,12,5,14,2,2,1,1,1,5,7,7,'2023-03-05 05:54:32','folder9',NULL),(11,'F','ABCD DEFG',2,1,'1989-08-16 00:00:00',151,1,3,101,201,4,5,1,11,5,14,1,1,1,1,1,6,7,2,'2023-03-05 05:51:09','folder',NULL),(14,'F','A333 B333',1,1,'1989-08-16 00:00:00',153,1,4,102,202,80,6,2,12,5,14,1,1,1,1,1,1,6,6,'2023-03-12 13:43:03','folder3',NULL),(15,'F','A444 B444',2,1,'1989-08-16 00:00:00',151,1,1,1,1,1,1,2,11,5,14,1,2,1,1,1,1,7,7,'2023-03-17 12:22:57','folder4','1'),(34,'F','ABCD DEFG',1,1,'1989-08-16 00:00:00',151,1,3,101,202,4,8,1,12,5,14,2,2,1,1,1,1,7,2,'2023-03-12 12:32:22','folder',NULL),(40,'M','Vimal',20,NULL,'1980-05-05 00:00:00',155,2,4,102,201,1,5,NULL,NULL,1,NULL,2,NULL,1,1,1,1,NULL,NULL,'2023-03-09 17:32:18',NULL,NULL),(43,NULL,NULL,NULL,NULL,NULL,NULL,1,3,101,202,3,5,NULL,NULL,NULL,NULL,1,NULL,1,1,1,1,NULL,NULL,'2023-03-17 12:29:59',NULL,NULL),(52,NULL,'M',2,NULL,'1989-08-16 00:00:00',154,1,3,101,202,5,8,NULL,12,5,14,1,2,1,1,1,2,7,1,'2023-03-05 05:51:08','folder2',NULL),(59,'M','Gaurav Chabbbra',20,NULL,'1980-05-05 00:00:00',155,NULL,NULL,NULL,NULL,NULL,NULL,NULL,13,7,14,2,1,1,1,1,3,6,1,'2023-03-05 05:51:09','folder3',NULL),(60,'m','atul pruthi',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,0,1,2,3,NULL,NULL,NULL,'2023-03-11 05:37:47',NULL,NULL),(63,'M','Sudhanshu Singh',0,NULL,'2001-01-01 00:00:00',189,NULL,NULL,NULL,NULL,NULL,NULL,1,1,1,278,NULL,4,NULL,NULL,NULL,NULL,1,2,'2023-03-15 17:07:49',NULL,NULL),(65,NULL,'TEst',1,NULL,'2001-01-02 00:00:00',189,NULL,NULL,NULL,NULL,NULL,NULL,1,1,1,278,NULL,2,NULL,NULL,NULL,NULL,1,2,'2023-03-15 17:22:59',NULL,NULL),(66,'M','Sudhanshu Singh',0,NULL,'2001-01-01 00:00:00',187,NULL,NULL,NULL,NULL,NULL,NULL,1,1,1,278,NULL,2,NULL,NULL,NULL,NULL,1,2,'2023-03-15 17:29:13',NULL,NULL),(67,NULL,'Sudhanshu Singh',0,NULL,'2001-01-02 00:00:00',187,NULL,NULL,NULL,NULL,NULL,NULL,1,1,1,407,NULL,2,NULL,NULL,NULL,NULL,1,2,'2023-03-15 17:33:00',NULL,NULL),(68,NULL,'Sudhanshu Singh',0,NULL,'2001-01-02 00:00:00',168,100,4,7,2,2,NULL,1,1,1,278,NULL,2,2,1,3,NULL,1,2,'2023-03-17 19:57:34',NULL,'test'),(75,NULL,'Sudhanshu Singh',0,NULL,'2001-01-02 00:00:00',167,1,1,1,1,1,1,1,1,1,278,1,2,NULL,NULL,NULL,1,1,2,'2023-03-17 12:24:51',NULL,'1'),(76,'M','Sudhanshu Singh',0,NULL,'2000-11-08 00:00:00',100,0,0,0,20,3,8,1,4,1,391,2,2,1,1,1,2,1,2,'2023-03-18 00:17:13','','IIT'),(77,'M','Sudhanshu Singh',1,NULL,'2001-01-01 00:00:00',0,0,0,0,5,1,8,1,1,1,485,1,1,2,1,1,1,1,2,'2023-03-18 05:49:40','1677256118170','IIT'),(78,'M','Sudhanshu Singh',1,NULL,'2001-01-01 00:00:00',100,100,3,8,49,1,8,1,1,1,278,1,2,2,1,1,1,1,2,'2023-03-18 06:53:08','1677257873600','IIT');
 /*!40000 ALTER TABLE `tab_user_profile` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -352,7 +308,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`warm`@`localhost`*/ /*!50003 TRIGGER `tab_user_profile_BEFORE_UPDATE` BEFORE UPDATE ON `tab_user_profile` FOR EACH ROW BEGIN
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `tab_user_profile_BEFORE_UPDATE` BEFORE UPDATE ON `tab_user_profile` FOR EACH ROW BEGIN
 	set NEW.profile_last_updated_date=NOW();
 END */;;
 DELIMITER ;
@@ -386,6 +342,50 @@ LOCK TABLES `tab_user_shortlist` WRITE;
 INSERT INTO `tab_user_shortlist` VALUES (9,15,'N'),(9,40,'Y'),(40,15,'Y');
 /*!40000 ALTER TABLE `tab_user_shortlist` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `tab_user_wastate`
+--
+
+DROP TABLE IF EXISTS `tab_user_wastate`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tab_user_wastate` (
+  `isd_mobile` bigint unsigned NOT NULL,
+  `menu_number` int DEFAULT NULL,
+  `state_setDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `question` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`isd_mobile`),
+  UNIQUE KEY `mobile_UNIQUE` (`isd_mobile`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tab_user_wastate`
+--
+
+LOCK TABLES `tab_user_wastate` WRITE;
+/*!40000 ALTER TABLE `tab_user_wastate` DISABLE KEYS */;
+INSERT INTO `tab_user_wastate` VALUES (9149999,4,'2023-03-03 10:55:38','email'),(917087871536,-3,'2023-02-25 15:46:22',''),(919312280091,0,'2023-02-28 11:55:13',''),(919650231035,2,'2023-03-14 00:07:29',''),(919910079085,10202,'2023-03-10 08:22:20',''),(9999999999999,3,'2023-02-19 14:26:06',NULL);
+/*!40000 ALTER TABLE `tab_user_wastate` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`warm`@`localhost`*/ /*!50003 TRIGGER `tab_user_WAState_BEFORE_UPDATE` BEFORE UPDATE ON `tab_user_wastate` FOR EACH ROW BEGIN
+	set NEW.state_setDate=NOW();
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Dumping events for database 'royalmatrimonial'
@@ -651,6 +651,37 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `spGetPassword` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spGetPassword`(
+    IN input_email_or_phone VARCHAR(50),
+    IN input_iso_code VARCHAR(2),
+    OUT output_password VARCHAR(50)
+)
+BEGIN
+	IF (input_iso_code IS NULL OR input_iso_code = '') THEN
+		SELECT password INTO output_password
+		FROM tab_user_login
+		WHERE email = input_email_or_phone;
+    ELSE
+		SELECT password INTO output_password
+		FROM tab_user_login
+		WHERE phone = input_email_or_phone AND isocode = input_iso_code;
+	END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_create_userAbout` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -900,8 +931,109 @@ BEGIN
     values(email,mob,pwd,email_verify,v_isdCode);
     SET v_out = LAST_INSERT_ID();
     Insert into tab_user_packagePrivacy(userid,user_rm_id,user_status,package_id,
-    profile_platform,user_created_date) Values(v_out,concat('RM',v_out),'R',1,profile_platform,sysdate());
+    profile_platform,user_created_date) Values(v_out,concat('RM',hex(day(now())),hex(v_out),hex(minute(now()))),'R',1,profile_platform,sysdate());
+	call sp_get_userPackagePrivacy(v_out,@v_out1,v_msg,v_json);
     SET v_msg ='ok';
+    commit;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_create_userPartnerPref` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`royal`@`localhost` PROCEDURE `sp_create_userPartnerPref`(
+IN v_userid INT,
+IN v_age_greater_than TINYINT,
+IN v_age_less_than TINYINT,
+IN v_height_greater_than TINYINT,
+IN v_height_less_than TINYINT,
+IN v_country TINYINT,
+IN v_state INT,
+IN v_city INT, 
+IN v_education TINYINT,
+IN v_occupation TINYINT,
+IN v_annual_income_greater_than TINYINT,
+IN v_marital_status TINYINT,
+IN v_religion TINYINT,
+IN v_mother_tongue TINYINT,
+IN v_caste INT,
+IN v_Residential_status TINYINT,
+IN v_manglik TINYINT,
+IN v_diet TINYINT,
+IN v_smoking TINYINT,
+IN v_drinking TINYINT,
+IN v_ready_to_settleAbroad TINYINT,
+IN v_Challenged TINYINT,
+IN v_children_status TINYINT,
+IN v_HIV TINYINT,
+IN v_horoscope_match INT,
+IN v_mandatory_fields VARCHAR(500),
+OUT v_out INT,
+OUT v_msg varchar(500)
+)
+BEGIN  
+	Declare currentSPname varchar(100) DEFAULT 'sp_create_userPartnerPref';
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION BEGIN 
+		SET v_out = -2; 
+        GET STACKED DIAGNOSTICS CONDITION 1 
+			@ERRNO = MYSQL_ERRNO, @MESSAGE_TEXT = MESSAGE_TEXT;
+		SET v_msg = CONCAT(currentSPname,': ',@MESSAGE_TEXT," : Erro code - ",@ERRNO);
+		ROLLBACK;
+	END;
+    DECLARE exit handler for sqlwarning BEGIN
+		SET v_out = -3; 
+        GET STACKED DIAGNOSTICS CONDITION 1 
+			@ERRNO = RETURNED_SQLSTATE, @MESSAGE_TEXT = MESSAGE_TEXT;
+		SET v_msg = CONCAT(currentSPname,': ',@MESSAGE_TEXT," : SQLSTATE - ",@ERRNO);
+		ROLLBACK; -- if any error occures it will rollback changes
+	END;
+    START transaction;
+    SET v_out = 1;
+    SET v_msg="ok";
+	INSERT INTO `royalmatrimonial`.`tab_user_partnerPref`(
+    `userid`,
+	`age_greater_than`,
+	`age_less_than`,
+	`height_greater_than`,
+	`height_less_than`,
+	`country`,
+	`state`,
+	`city`,
+	`education`,
+	`occupation`,
+	`annual_income_greater_than`,
+	`marital_status`,
+	`religion`,
+	`mother_tongue`,
+	`caste`,
+	`Residential_status`,
+	`manglik`,
+	`diet`,
+	`smoking`,
+	`drinking`,
+	`ready_to_settleAbroad`,
+	`Challenged`,
+	`children_status`,
+	`HIV`,
+	`horoscope_match`,
+	`mandatory_fields`)
+	Select v_userid,v_age_greater_than,v_age_less_than,v_height_greater_than,v_height_less_than,v_country,v_state,v_city,v_education,v_occupation,v_annual_income_greater_than,v_marital_status,v_religion,v_mother_tongue,v_caste,v_Residential_status,v_manglik,v_diet,v_smoking,v_drinking,v_ready_to_settleAbroad,v_Challenged,v_children_status,v_HIV,v_horoscope_match,v_mandatory_fields
+	from tab_user_login 
+    where v_userid=userid; 
+	if (ROW_COUNT() = 0) Then
+		SET v_msg=CONCAT(currentSPname,': User ID ', v_userid,' does not exist');
+		SET v_out = -1;
+    End IF;
     commit;
 END ;;
 DELIMITER ;
@@ -1342,6 +1474,255 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_get_mandatoryMatchMaking` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`royal`@`localhost` PROCEDURE `sp_get_mandatoryMatchMaking`(
+	IN user1Profile_userid INT,
+    IN v_maxUserid INT,
+	IN v_limit INT,
+    IN v_viceversaFlag boolean,
+	OUT v_json JSON,
+	OUT v_out INT,
+	OUT v_msg VARCHAR(500)
+)
+BEGIN
+    Declare currentSPname varchar(100) DEFAULT 'sp_get_mandatoryMatchMaking';
+	DECLARE EXIT HANDLER FOR SQLEXCEPTION BEGIN 
+		SET v_out = -2;
+        SET v_json = null;
+		GET STACKED DIAGNOSTICS CONDITION 1 
+			@ERRNO = MYSQL_ERRNO, @MESSAGE_TEXT = MESSAGE_TEXT;
+		SET v_msg = CONCAT(currentSPname,': ',@MESSAGE_TEXT," : Erro code - ",@ERRNO);
+		ROLLBACK;
+	END;
+	DECLARE exit handler for sqlwarning BEGIN
+		SET v_out = -3; 
+        SET v_json = null;
+		GET STACKED DIAGNOSTICS CONDITION 1 
+			@ERRNO = RETURNED_SQLSTATE, @MESSAGE_TEXT = MESSAGE_TEXT;
+		SET v_msg = CONCAT(currentSPname,': ',@MESSAGE_TEXT," : SQLSTATE - ",@ERRNO);
+		ROLLBACK; -- if any error occures it will rollback changes
+	END;
+    START transaction;
+    SET v_out = 1;
+    SET v_msg="ok";
+    
+	select b.marital_status,
+	b.age_greater_than, b.age_less_than,
+	b.height_greater_than, b.height_less_than,
+	b.country,
+	b.state,
+	b.city,
+	b.education,
+	b.occupation,
+	b.annual_income_greater_than,
+	b.children_status,
+	b.mother_tongue,
+	b.religion,
+	b.caste,
+	b.Residential_status,
+	b.manglik,
+	b.diet,
+	b.smoking,
+	b.drinking,
+	b.ready_to_settleAbroad,
+	b.Challenged,
+	b.HIV,
+    b.mandatory_fields
+	INTO 
+	@v_marital_status,
+	@v_age_greater_than, @v_age_less_than,
+	@v_height_greater_than, @v_height_less_than,
+	@v_country,
+	@v_state,
+	@v_city,
+	@v_education,
+	@v_occupation,
+	@v_annual_income,
+	@v_children_status,
+	@v_mother_tongue,
+	@v_religion,
+	@v_caste,
+	@v_residentialstatus,
+	@v_manglik,
+	@v_diet,
+	@v_smoking,
+	@v_drinking,
+	@v_readytosettleabroad,
+	@v_Challenged,
+	@v_HIV,
+    @v_mandatory_fields
+	from tab_user_partnerPref b where b.userid=user1Profile_userid;
+	
+    SET @user1Profile_userid = user1Profile_userid;
+    SET @v_limit1 = v_limit;
+    SET @v_maxUserid1 = v_maxUserid;
+    SET @v_mandatoryCols = '';
+	
+    Select `gender`,`marital_status`,`dob`,`height_cm`,`country`,`state`,`city`,`education`,`occupation`,`annual_income`,
+	`children_status`,`mother_tongue`,`religion`,`caste`,`residentialstatus`,`manglik`,`diet`,`smoking`,`drinking`,
+	`readytosettleabroad`,`challenged`,`hiv`
+	into @user1Profile_gender,@user1Profile_marital_status,@user1Profile_dob ,@user1Profile_height_cm ,
+    @user1Profile_country ,	@user1Profile_state ,@user1Profile_city ,@user1Profile_education ,@user1Profile_occupation ,
+    @user1Profile_annual_income ,@user1Profile_children_status ,@user1Profile_mother_tongue ,@user1Profile_religion ,
+    @user1Profile_caste ,@user1Profile_residentialstatus ,@user1Profile_manglik ,@user1Profile_diet ,
+    @user1Profile_smoking ,	@user1Profile_drinking ,@user1Profile_readytosettleabroad ,@user1Profile_challenged ,
+    @user1Profile_hiv from tab_user_profile where userid = user1Profile_userid; 
+   
+	if('height' member of(@v_mandatory_fields)) Then
+		SET @v_mandatoryCols = CONCAT(@v_mandatoryCols,' AND ((@v_height_greater_than <=height_cm) AND (height_cm <= @v_height_less_than)) ');
+    End if;
+	if('country' member of(@v_mandatory_fields)) Then
+		SET @v_mandatoryCols = CONCAT(@v_mandatoryCols,' AND (ISNULL(@v_country) OR country member of(@v_country)) ');
+    End if;
+	if('state' member of(@v_mandatory_fields)) Then
+		SET @v_mandatoryCols = CONCAT(@v_mandatoryCols,' AND (ISNULL(@v_state) OR state member of(@v_state)) ');
+    End if;
+	if('city' member of(@v_mandatory_fields)) Then
+		SET @v_mandatoryCols = CONCAT(@v_mandatoryCols,' AND (ISNULL(@v_city) OR city member of(@v_city)) ');
+	End if;
+	if('education' member of(@v_mandatory_fields)) Then
+		SET @v_mandatoryCols = CONCAT(@v_mandatoryCols,' AND (ISNULL(@v_education) OR education member of(@v_education)) ');
+    End if;
+	if('occupation' member of(@v_mandatory_fields)) Then
+		SET @v_mandatoryCols = CONCAT(@v_mandatoryCols,' AND (ISNULL(@v_occupation) OR occupation member of(@v_occupation))');
+    End if;
+	if('annual_income' member of(@v_mandatory_fields)) Then
+		SET @v_mandatoryCols = CONCAT(@v_mandatoryCols,' AND (@v_annual_income=0 OR @v_annual_income<=annual_income) ');
+    End if;
+	if('children_status' member of(@v_mandatory_fields)) Then
+		SET @v_mandatoryCols = CONCAT(@v_mandatoryCols,' AND (ISNULL(@v_children_status) OR children_status member of(@v_children_status)) ');
+    End if;
+	if('mother_tongue' member of(@v_mandatory_fields)) Then
+		SET @v_mandatoryCols = CONCAT(@v_mandatoryCols,' AND (ISNULL(@v_mother_tongue) OR mother_tongue member of(@v_mother_tongue)) ');
+    End if;
+	if('religion' member of(@v_mandatory_fields)) Then
+		SET @v_mandatoryCols = CONCAT(@v_mandatoryCols,' AND (ISNULL(@v_religion) OR religion member of(@v_religion)) ');
+    End if;
+	if('caste' member of(@v_mandatory_fields)) Then
+		SET @v_mandatoryCols = CONCAT(@v_mandatoryCols,' AND (ISNULL(@v_caste) OR caste member of(@v_caste)) ');
+    End if;
+	if('residentialstatus' member of(@v_mandatory_fields)) Then
+		SET @v_mandatoryCols = CONCAT(@v_mandatoryCols,' AND (ISNULL(@v_Residential_status) OR residentialstatus member of(@v_Residential_status)) ');
+    End if;
+	if('manglik' member of(@v_mandatory_fields)) Then
+		SET @v_mandatoryCols = CONCAT(@v_mandatoryCols,' AND (ISNULL(@v_manglik) OR manglik member of(@v_manglik)) ');
+    End if;
+	if('diet' member of(@v_mandatory_fields)) Then
+		SET @v_mandatoryCols = CONCAT(@v_mandatoryCols,' AND (@v_diet=0 OR @v_diet=diet) ');
+    End if;
+	if('smoking' member of(@v_mandatory_fields)) Then
+		SET @v_mandatoryCols = CONCAT(@v_mandatoryCols,' AND (@v_smoking=0 OR @v_smoking=smoking) ');
+    End if;
+	if('drinking' member of(@v_mandatory_fields)) Then
+		SET @v_mandatoryCols = CONCAT(@v_mandatoryCols,' AND (@v_drinking=0 OR @v_drinking=drinking) ');
+    End if;
+	if('readytosettleabroad' member of(@v_mandatory_fields)) Then
+		SET @v_mandatoryCols = CONCAT(@v_mandatoryCols,' AND (@v_ready_to_settleAbroad=0 OR @v_ready_to_settleAbroad=readytosettleabroad) ');
+    End if;
+	if('challenged' member of(@v_mandatory_fields)) Then
+		SET @v_mandatoryCols = CONCAT(@v_mandatoryCols,' AND (ISNULL(@v_challenged) OR challenged member of(@v_challenged)) ');
+    End if;
+	if('hiv' member of(@v_mandatory_fields)) Then
+		SET @v_mandatoryCols = CONCAT(@v_mandatoryCols,' AND (@v_hiv=0 OR @v_hiv=hiv) ');
+    End if;
+    if(v_viceversaFlag) then
+		SET @v_iSUserPrefMatch = ' AND (func_isUserPrefMatch(tab_user_profile.userid,@user1Profile_userid,@user1Profile_marital_status,
+		@user1Profile_dob ,@user1Profile_height_cm ,@user1Profile_country ,	@user1Profile_state ,@user1Profile_city,
+		@user1Profile_education,@user1Profile_occupation,@user1Profile_annual_income,@user1Profile_children_status,
+		@user1Profile_mother_tongue,@user1Profile_religion,@user1Profile_caste,@user1Profile_residentialstatus,
+		@user1Profile_manglik,@user1Profile_diet,@user1Profile_smoking,@user1Profile_drinking,
+		@user1Profile_readytosettleabroad,@user1Profile_challenged,@user1Profile_hiv) = 1)';
+	else
+		SET @v_iSUserPrefMatch = '';
+	end if;
+    SET @v_mandatoryCols = CONCAT(@v_mandatoryCols,@v_iSUserPrefMatch);
+	select DATE_SUB(SYSDATE(), INTERVAL @v_age_greater_than YEAR), DATE_SUB(SYSDATE(), INTERVAL @v_age_less_than YEAR) into @v_dobLowLimit,@v_dobUpperLimit;
+    SET @s_sql = CONCAT(
+    'select json_arrayagg(json_object(''userid'',uid,''fullname'',fname,''photo'',pht,''row'',rw1,
+    ''privacy_photo'',pp,''privacy_name'',pname,''privacy_contact'',pcontact)) into @v_json1 from
+    (
+    select tab_user_profile.userid as uid,fullname as fname,photo as pht,
+    ROW_NUMBER() OVER (order by tab_user_profile.userid desc) rw1,
+	privacy_show_photo as pp, privacy_show_contact as pcontact, privacy_show_name as pname
+    from tab_user_profile  left join tab_user_packagePrivacy on
+    tab_user_profile.userid = tab_user_packagePrivacy.userid
+    where 
+    tab_user_profile.userid<@v_maxUserid1 
+    AND @user1Profile_userid <> tab_user_profile.userid 
+    AND @user1Profile_gender <> gender
+    AND (ISNULL(@v_marital_status) OR marital_status member of(@v_marital_status))
+    AND (@v_dobUpperLimit<= dob AND dob <=@v_dobLowLimit) ',@v_mandatoryCols,
+    ' LIMIT ',@v_limit1,
+    ' ) AS SB ' );
+    PREPARE stmt FROM @s_sql;
+    EXECUTE stmt;
+    DEALLOCATE PREPARE stmt;
+    SET v_json = @v_json1;
+	if(JSON_LENGTH( @v_json1)) >0 Then
+		SET v_out = JSON_LENGTH( @v_json1);
+	else
+		SET v_out = 0;
+	end if;
+    commit;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_get_password` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_get_password`(
+    IN input_email_or_phone VARCHAR(50),
+    IN input_iso_code VARCHAR(2),
+    OUT v_out INT,
+	OUT v_msg varchar(500),
+	OUT v_json json 
+)
+BEGIN
+	DECLARE output_password varchar(100);
+	IF (input_iso_code IS NULL OR input_iso_code = '') THEN
+		SELECT password INTO output_password
+		FROM tab_user_login
+		WHERE emailid = input_email_or_phone;
+        SET v_out=1;
+        SET v_msg= output_password;
+		SET v_json = null;
+    ELSEIF (input_iso_code IS NOT NULL OR input_iso_code != '') THEN
+		SELECT password INTO output_password
+		FROM tab_user_login
+		WHERE mobile = input_email_or_phone AND isd_code = input_iso_code;
+        SET v_out=1;
+        SET v_msg= output_password;
+		SET v_json = null;
+	ELSE
+		SET v_out=-1;
+        SET v_msg="no user found";
+		SET v_json = null;
+	END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_get_strictFieldsMatchMaking` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1683,7 +2064,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`royal`@`localhost` PROCEDURE `sp_get_userEmailAuth`(
 	IN v_emailid varchar(100),
-	IN v_pwd VARCHAR(100),
+	IN v_pwd boolean,
 	OUT v_out INT,
 	OUT v_msg varchar(500),
 	OUT v_json json 
@@ -1710,7 +2091,7 @@ BEGIN
 	SET v_json = null;
     SET @pwd = null;
     select userid,password into @userid,@pwd from tab_user_login where v_emailid = emailid ;
-    if (v_pwd=@pwd) Then 
+    if (v_pwd=true) Then 
 		SET v_out=1;
         call sp_get_userPackagePrivacy(@userid,v_out,v_msg,v_json);
 	else 
@@ -1847,7 +2228,7 @@ DELIMITER ;;
 CREATE DEFINER=`royal`@`localhost` PROCEDURE `sp_get_userMobileAuth`(
 	IN v_isdCode INT,
 	IN v_mobile BIGINT UNSIGNED,
-	IN v_pwd VARCHAR(100),
+	IN v_pwd boolean,
 	OUT v_out INT,
 	OUT v_msg varchar(500),
 	OUT v_json json
@@ -1874,7 +2255,7 @@ BEGIN
 	SET v_json = null;
     SET @pwd = null;
     select userid,password into @userid,@pwd from tab_user_login where v_mobile = mobile AND v_isdCode = isd_code;
-    if (v_pwd=@pwd) Then 
+    if (v_pwd=true) Then 
 		SET v_out=1;
         call sp_get_userPackagePrivacy(@userid,v_out,v_msg,v_json);
 	else 
@@ -2344,15 +2725,15 @@ BEGIN
         end if;
 	ELSEIF(v_actionType ='v') Then
 		   select json_object(
-			`country`,a.country,
-			`state`,a.state,  
-			`city`,a.city,
-			`education`,a.education,  
-			`occupation`,a.occupation,
-			`annual_income`,a.annual_income,
-			`residentialstatus`,a.residentialstatus,
-			`readytosettleabroad`,a.readytosettleabroad,
-			`College`,a.College
+			'country',a.country,
+			'state',a.state,  
+			'city',a.city,
+			'education',a.education,  
+			'occupation',a.occupation,
+			'annual_income',a.annual_income,
+			'residentialstatus',a.residentialstatus,
+			'readytosettleabroad',a.readytosettleabroad,
+			'College',a.College
 		) into v_json from tab_user_profile a where v_userid = a.userid;
 		End IF;
 	commit;
@@ -2416,15 +2797,15 @@ BEGIN
 		call sp_update_userField(v_userid,'user_status','3',v_out,v_msg,v_json);
 	ELSEIF(v_actionType ='v') Then
 		   select json_object(
-			`diet`,a.diet,
-			`smoking`,a.smoking,  
-			`drinking`,a.drinking,
-			`love_pets`,b.love_pets,  
-			`Owns_house`,b.Owns_house,
-			`Owns_car`,b.Owns_car,
-			`blood_group`,b.blood_group,
-			`Thalassemia`,b.Thalassemia,
-			`religious_belief`,b.religious_belief
+			'diet',a.diet,
+			'smoking',a.smoking,  
+			'drinking',a.drinking,
+			'love_pets',b.love_pets,  
+			'Owns_house',b.Owns_house,
+			'Owns_car',b.Owns_car,
+			'blood_group',b.blood_group,
+			'Thalassemia',b.Thalassemia,
+			'religious_belief',b.religious_belief
 		) into v_json from tab_user_profile a,tab_user_lifestyle b where v_userid = a.userid and v_userid=b.userid;
 	ELSEIF(v_actionType ='u') Then
 		update tab_user_profile SET diet = v_diet,smoking = v_smoking,drinking=v_drinking where
@@ -3108,7 +3489,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`warm`@`localhost` PROCEDURE `sp_update_userField`(
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_update_userField`(
 	IN v_userid INT,
     IN v_fieldName VARCHAR(50),
 	IN v_valueString varchar(1000),
@@ -3353,4 +3734,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-14 23:31:53
+-- Dump completed on 2023-03-18 13:12:59
