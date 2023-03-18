@@ -2951,13 +2951,14 @@ BEGIN
     if(v_actionType='c' OR v_actionType='u') Then
 		 update tab_user_about set about_career=v_about_career,about_education=v_about_education,
          about_family=v_about_family,basic_intro=v_basic_intro where v_userid=userid;
-		if(v_actionType='c') Then
-			call sp_update_userField(v_userid,'user_status','5',v_out,v_msg,v_json);
-        end if;
 		if (ROW_COUNT() = 0) Then
 			SET v_msg=CONCAT(currentSPname,': User ID ', v_userid,' does not exist');
 			SET v_out = -1;
-		End IF;
+		else
+			if(v_actionType='c') Then
+				call sp_update_userField(v_userid,'user_status','5',v_out,v_msg,v_json);
+			end if;
+		end if;
    	ELSEIF(v_actionType ='v') Then
 			select json_object('basic_intro',b.basic_intro,'about_family',b.about_family,  
 			'about_career',b.about_career,'about_education',b.about_education) 
@@ -3734,4 +3735,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-18 13:12:59
+-- Dump completed on 2023-03-18 13:27:16
