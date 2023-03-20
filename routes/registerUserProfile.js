@@ -1,3 +1,4 @@
+const upload = require("../helpers/multer");
 const createUserStep1 = require("../controller/sp_onPage1");
 const createUserStep2 = require("../controller/sp_onPage2");
 const createUserStep3 = require("../controller/sp_onPage3");

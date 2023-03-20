@@ -1,7 +1,8 @@
 const { executeStoredProcedure } = require("../helpers/storedProcedure");
 
-const createUserPartnerPref = (req, res) => {
+const createPartnerPref = (req, res) => {
   const values = [
+    req.body.actionType,
     req.body.userId,
     req.body.ageGreaterThan,
     req.body.ageLessThan,
@@ -16,7 +17,7 @@ const createUserPartnerPref = (req, res) => {
     req.body.maritalStatus,
     req.body.religion,
     req.body.motherTongue,
-    req.body.caste,
+    req.body.cast,
     req.body.residentialStatus,
     req.body.manglik,
     req.body.diet,
@@ -29,15 +30,15 @@ const createUserPartnerPref = (req, res) => {
     req.body.horoscopeMatch,
     req.body.mandatoryFields,
   ];
-  executeStoredProcedure("sp_create_userPartnerPref", [values]).then((result) => {
+  executeStoredProcedure("sp_onPagePartnerPref", [values]).then((result) => {
     if (result["0"]["output"] < 0) {
       res.json(result);
     } else {
       try {
         res.json({
           ...result["0"],
-          status: 200,
           jsonResponse: JSON.parse(result["0"].jsonResponse),
+          status: 200,
         });
       } catch (error) {
         throw error;
@@ -46,4 +47,4 @@ const createUserPartnerPref = (req, res) => {
   });
 };
 
-module.exports = createUserPartnerPref;
+module.exports = createPartnerPref;

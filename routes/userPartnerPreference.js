@@ -1,9 +1,9 @@
-const createUserPartnerProfile = require("../controller/sp_create_userPartnerPref");
+const createPartnerPref = require("../controller/sp_onPagePartnerPref");
 const express = require("express"),
   router = express.Router();
 
 router.post("/postPartnerPref", (req, res) => {
-  createUserPartnerProfile(req, res);
+  createPartnerPref(req, res);
 });
 
 module.exports = router;
