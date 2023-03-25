@@ -26,10 +26,10 @@ app.use(
   })
 );
 // use routers
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-app.use("/auth", authentication);
-app.use("/registerUser", registerUserProfile);
-app.use("/userPartnerPreference", userPartnerPreference);
+app.use("/api/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/api/auth", authentication);
+app.use("/api/registerUser", registerUserProfile);
+app.use("/api/userPartnerPreference", userPartnerPreference);
 
 // make server object that contain port property and the value for our server.
 const server = {

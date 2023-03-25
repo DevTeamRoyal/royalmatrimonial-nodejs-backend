@@ -6,8 +6,7 @@ const fs = require("fs");
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     const userId = req.body.userId;
-    console.log(userId);
-    const uploadPath = path.join(__dirname, "uploads", userId.toString());
+    const uploadPath = path.join(__dirname, "../uploads", userId.toString());
     fs.mkdirSync(uploadPath, { recursive: true });
     cb(null, uploadPath);
   },
@@ -33,6 +32,7 @@ const upload = multer({
       cb(new Error("Only .jpg, .jpeg, and .png files are allowed"));
     }
   },
+  encoding: "utf8",
 });
 
 module.exports = upload;

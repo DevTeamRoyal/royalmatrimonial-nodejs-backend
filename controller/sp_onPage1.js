@@ -1,6 +1,7 @@
 const { executeStoredProcedure } = require("../helpers/storedProcedure");
-
-const createUserStep1 = (req, res) => {
+const createUserStep1 = async (req, res) => {
+  const profilePicPath = `uploads/${req.body.userId}/${req.body.profilepic}`;
+  console.log(profilePicPath);
   const values = [
     req.body.actionType,
     req.body.userId,
@@ -17,7 +18,7 @@ const createUserStep1 = (req, res) => {
     req.body.isManglik,
     req.body.challenged,
     req.body.isHiv,
-    req.body.profilepic,
+    profilePicPath,
     req.body.profileHandlerName,
   ];
   executeStoredProcedure("sp_onPage1", [values]).then((result) => {

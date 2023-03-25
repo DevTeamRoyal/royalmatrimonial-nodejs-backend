@@ -5,6 +5,7 @@ const { executeStoredProcedure } = require("../helpers/storedProcedure"),
 
 const userEmailAuth = async (req, res) => {
   const hashedPassword = await getPassword(req.body.emailid, req.body.isocode);
+  console.log(hashedPassword);
   const isPasswordTrue = await comparePasswords(
     req.body.password,
     hashedPassword
