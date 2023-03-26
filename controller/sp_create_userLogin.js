@@ -18,14 +18,14 @@ const userSignUp = (req, res) => {
   const token = createToken({ ...values });
   executeStoredProcedure("sp_create_userLogin", [values]).then((result) => {
     if (result["0"]["output"] < 0) {
-      res.json(result);
+      res.json({ ...result["0"] });
     } else {
       try {
         res.json({
           ...result["0"],
           status: 200,
           jsonResponse: JSON.parse(result["0"].jsonResponse),
-          token,
+          token: result["0"].jsonResponse ? token : null,
         });
       } catch (error) {
         throw error;

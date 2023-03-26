@@ -7,8 +7,12 @@ const createUserStep5 = require("../controller/sp_onPage5");
 const express = require("express"),
   router = express.Router();
 
-router.post("/step1", upload.single('image'), (req, res) => {
-  createUserStep1(req, res);
+router.post("/step1", upload.single("image"), (req, res) => {
+  try {
+    createUserStep1(req, res);
+  } catch (err) {
+    res.json({ error: err });
+  }
 });
 router.post("/step2", (req, res) => {
   createUserStep2(req, res);

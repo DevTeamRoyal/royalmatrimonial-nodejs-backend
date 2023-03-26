@@ -1,7 +1,6 @@
 const { executeStoredProcedure } = require("../helpers/storedProcedure");
 const createUserStep1 = async (req, res) => {
   const profilePicPath = `uploads/${req.body.userId}/${req.body.profilepic}`;
-  console.log(profilePicPath);
   const values = [
     req.body.actionType,
     req.body.userId,
@@ -32,7 +31,7 @@ const createUserStep1 = async (req, res) => {
           status: 200,
         });
       } catch (error) {
-        throw error;
+        res.send(error);
       }
     }
   });

@@ -23,9 +23,9 @@ const upload = multer({
     fileSize: 1024 * 1024 * 5, // 5 MB
   },
   fileFilter: function (req, file, cb) {
-    const profilePic = req.body.profilepic;
-    const allowedExtensions = [".jpg", ".jpeg", ".png"];
-    const extension = path.extname(profilePic).toLowerCase();
+    const profilePicExt = file.mimetype.split("/")[1];
+    const allowedExtensions = ["jpg", "jpeg", "png"];
+    const extension = profilePicExt.toLowerCase();
     if (allowedExtensions.includes(extension)) {
       cb(null, true);
     } else {
