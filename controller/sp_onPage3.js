@@ -32,6 +32,8 @@ const createUserStep3 = (req, res) => {
       req.body.bloodGroup,
       req.body.thalassemia,
       req.body.religiousBelief,
+      req.body.cartype,
+      req.body.housetype,
     ];
     executeStoredProcedure("sp_onPage3", [values]).then((result) => {
       if (result["0"]["output"] < 0) {

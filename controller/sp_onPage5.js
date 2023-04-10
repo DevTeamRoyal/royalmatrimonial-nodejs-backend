@@ -27,6 +27,11 @@ const createUserStep5 = (req, res) => {
       req.body.aboutFamily,
       req.body.aboutEducation,
       req.body.basicIntro,
+      req.body.birthCountry,
+      req.body.birthState,
+      req.body.birthCity,
+      null,
+      null
     ];
     executeStoredProcedure("sp_onPage5", [values]).then((result) => {
       if (result["0"]["output"] < 0) {
