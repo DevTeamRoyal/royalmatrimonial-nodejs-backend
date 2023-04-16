@@ -12,7 +12,11 @@ const storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     const profilePic = req.body.profilepic;
-    cb(null, profilePic);
+    if (profilePic) {
+      cb(null, profilePic);
+    } else {
+      cb(null, Date.now() + path.extname(file.originalname));
+    }
   },
 });
 

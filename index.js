@@ -9,6 +9,7 @@ require("dotenv").config();
 const authentication = require("./routes/authentication");
 const registerUserProfile = require("./routes/registerUserProfile");
 const userPartnerPreference = require("./routes/userPartnerPreference");
+const userImages = require("./routes/galleryImages");
 
 // use the modules
 app.use(cors());
@@ -30,6 +31,7 @@ app.use("/api/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/api/auth", authentication);
 app.use("/api/registerUser", registerUserProfile);
 app.use("/api/userPartnerPreference", userPartnerPreference);
+app.use("/api/userImage", userImages);
 
 // make server object that contain port property and the value for our server.
 const server = {
