@@ -1,4 +1,5 @@
 const userSignUpService = require("../controller/sp_create_userLogin");
+const isUserRegistered = require("../controller/sp_get_isUserRegistered");
 const {
   userEmailAuth,
   userMobilelAuth,
@@ -7,6 +8,9 @@ const express = require("express"),
   router = express.Router();
 
 // create new user login
+router.post("/isUserRegistered", (req, res) => {
+  isUserRegistered(req, res);
+});
 router.post("/signUp", (req, res) => {
   userSignUpService(req, res);
 });
