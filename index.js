@@ -19,14 +19,8 @@ app.use(
     extended: false,
   })
 );
-app.use(bodyParser.json());
-app.use(
-  bodyParser.urlencoded({
-    limit: "5mb",
-    extended: true,
-    parameterLimit: 50000,
-  })
-);
+app.use(bodyParser.json({ limit: "5mb" }));
+app.use(bodyParser.urlencoded({ limit: "5mb", extended: true }));
 // use routers
 app.use("/api/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/api/auth", authentication);
