@@ -2,7 +2,9 @@ const express = require("express"),
   app = express(),
   cors = require("cors"),
   path = require("path"),
-  bodyParser = require("body-parser");
+  morgan = require("morgan"),
+  bodyParser = require("body-parser"),
+  logger = require("./helpers/logger");
 require("dotenv").config();
 
 // routers import
@@ -12,7 +14,15 @@ const userPartnerPreference = require("./routes/userPartnerPreference");
 const userImages = require("./routes/galleryImages");
 const sms = require("./routes/sms");
 
-// use the modules
+//Middleware configs
+app.use(
+  morgan("combined", {
+    stream: {
+      write: (message) => logger.info(message.trim()),
+    },
+  })
+);
+
 app.use(cors());
 app.use(
   bodyParser.urlencoded({
@@ -21,6 +31,7 @@ app.use(
 );
 app.use(bodyParser.json({ limit: "5mb" }));
 app.use(bodyParser.urlencoded({ limit: "5mb", extended: true }));
+
 // use routers
 app.use("/api/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/api/auth", authentication);
