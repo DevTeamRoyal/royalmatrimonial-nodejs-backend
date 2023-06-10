@@ -14,6 +14,8 @@ const userPartnerPreference = require("./routes/userPartnerPreference");
 const userImages = require("./routes/galleryImages");
 const sms = require("./routes/sms");
 const admin = require("./routes/admin");
+const matchmaking = require("./routes/allMatchMaking");
+const privacy = require("./routes/userPrivacy");
 
 //Middleware configs
 app.use(
@@ -39,8 +41,11 @@ app.use("/api/auth", authentication);
 app.use("/api/registerUser", registerUserProfile);
 app.use("/api/userPartnerPreference", userPartnerPreference);
 app.use("/api/userImage", userImages);
+app.use("/api/matchmaking", matchmaking);
 app.use("/api/sms", sms);
 app.use("/api/admin", admin);
+app.use("/api/privacy", privacy);
+
 // make server object that contain port property and the value for our server.
 const server = {
   port: process.env.SERVER_PORT,
