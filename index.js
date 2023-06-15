@@ -16,6 +16,7 @@ const sms = require("./routes/sms");
 const admin = require("./routes/admin");
 const matchmaking = require("./routes/allMatchMaking");
 const privacy = require("./routes/userPrivacy");
+const userDetails = require("./routes/userDetails");
 
 //Middleware configs
 app.use(
@@ -45,6 +46,7 @@ app.use("/api/matchmaking", matchmaking);
 app.use("/api/sms", sms);
 app.use("/api/admin", admin);
 app.use("/api/privacy", privacy);
+app.use("/api/userDetails", userDetails);
 
 // make server object that contain port property and the value for our server.
 const server = {
