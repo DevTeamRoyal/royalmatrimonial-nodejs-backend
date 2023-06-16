@@ -6,6 +6,7 @@ const getAllMatchMaking = (req, res) => {
     req.body.maxUserId,
     req.body.limit,
     req.body.viceVersa,
+    req.body.excludedUsers,
   ];
   executeStoredProcedure("sp_get_allMatchMaking", [values]).then((result) => {
     if (result["0"]["output"] < 0) {
