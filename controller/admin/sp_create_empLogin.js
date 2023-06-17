@@ -1,5 +1,5 @@
-const { executeStoredProcedure } = require("../helpers/storedProcedure"),
-  { generateHashPwd, checkHashPwd } = require("../helpers/bcrypt");
+const { executeStoredProcedure } = require("../../helpers/storedProcedure"),
+  { generateHashPwd, checkHashPwd } = require("../../helpers/bcrypt");
 
 const createEmployee = (req, res) => {
   const hashedPwd = generateHashPwd(req.body.password);

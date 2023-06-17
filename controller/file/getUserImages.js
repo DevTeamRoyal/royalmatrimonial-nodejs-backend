@@ -1,4 +1,4 @@
-const { executeStoredProcedure } = require("../helpers/storedProcedure");
+const { executeStoredProcedure } = require("../../helpers/storedProcedure");
 
 const getUserImages = (req, res) => {
   const values = [req.body.userId];

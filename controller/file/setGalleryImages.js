@@ -1,4 +1,4 @@
-const { executeStoredProcedure } = require("../helpers/storedProcedure");
+const { executeStoredProcedure } = require("../../helpers/storedProcedure");
 const setUserGallery = async (req, res) => {
   let galleryImagesURIs = [];
   const prevImages = JSON.parse(req.body.PrevImg);

@@ -1,8 +1,8 @@
-const { executeStoredProcedure } = require("../helpers/storedProcedure");
-const createUserStep1 = async (req, res) => {
-  const profilePicPath = `uploads/${req.body.userId}/${req.body.profilepic}`;
+const { executeStoredProcedure } = require("../../helpers/storedProcedure");
+
+const createUserStep4 = (req, res) => {
   if (req.body.actionType === "v") {
-    executeStoredProcedure("sp_onPage1View", [req.body.userId]).then(
+    executeStoredProcedure("sp_onPage4View", [req.body.userId]).then(
       (result) => {
         if (result["0"]["output"] < 0) {
           res.json(result);
@@ -23,23 +23,20 @@ const createUserStep1 = async (req, res) => {
     const values = [
       req.body.actionType,
       req.body.userId,
-      req.body.profilefor,
-      req.body.selectgender,
-      req.body.fullname,
-      req.body.maritalstatus,
-      req.body.dob,
-      req.body.height,
-      req.body.childrenstatus,
-      req.body.mothertongue,
-      req.body.religion,
-      req.body.cast,
-      req.body.isManglik,
-      req.body.challenged,
-      req.body.isHiv,
-      profilePicPath,
-      req.body.profileHandlerName,
+      req.body.mothersProfession,
+      req.body.fathersProfession,
+      req.body.sister,
+      req.body.brother,
+      req.body.gothra,
+      req.body.familyStatus,
+      req.body.familyIncome,
+      req.body.familyType,
+      req.body.familyNativeCountry,
+      req.body.familyNativeState,
+      req.body.familyNativeCity,
+      req.body.livingWithParents,
     ];
-    executeStoredProcedure("sp_onPage1", [values]).then((result) => {
+    executeStoredProcedure("sp_onPage4", [values]).then((result) => {
       if (result["0"]["output"] < 0) {
         res.json(result);
       } else {
@@ -50,11 +47,11 @@ const createUserStep1 = async (req, res) => {
             status: 200,
           });
         } catch (error) {
-          res.send(error);
+          throw error;
         }
       }
     });
   }
 };
 
-module.exports = createUserStep1;
+module.exports = createUserStep4;

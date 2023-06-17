@@ -1,4 +1,4 @@
-const { executeStoredProcedure } = require("../helpers/storedProcedure");
+const { executeStoredProcedure } = require("../../helpers/storedProcedure");
 const setUserCoverImage = async (req, res) => {
   const coverPhotoURI = req.files.map(
     (file) => `uploads/${req.body.userId}/${file.filename}`

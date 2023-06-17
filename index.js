@@ -17,6 +17,9 @@ const admin = require("./routes/admin");
 const matchmaking = require("./routes/allMatchMaking");
 const privacy = require("./routes/userPrivacy");
 const userDetails = require("./routes/userDetails");
+const blockUser = require("./routes/blockUser");
+const shortlist = require("./routes/shortlist");
+const interestList = require("./routes/interestList");
 
 //Middleware configs
 app.use(
@@ -47,6 +50,9 @@ app.use("/api/sms", sms);
 app.use("/api/admin", admin);
 app.use("/api/privacy", privacy);
 app.use("/api/userDetails", userDetails);
+app.use("/api/blockUser", blockUser);
+app.use("/api/shortlist", shortlist);
+app.use("/api/interestList", interestList);
 
 // make server object that contain port property and the value for our server.
 const server = {

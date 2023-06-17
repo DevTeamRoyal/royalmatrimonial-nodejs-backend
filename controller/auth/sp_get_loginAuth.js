@@ -1,7 +1,7 @@
-const getPassword = require("../helpers/getPassword");
-const { executeStoredProcedure } = require("../helpers/storedProcedure"),
-  { createToken, verifyToken } = require("../helpers/jwt"),
-  { comparePasswords } = require("../helpers/bcrypt");
+const getPassword = require("../../helpers/getPassword");
+const { executeStoredProcedure } = require("../../helpers/storedProcedure"),
+  { createToken, verifyToken } = require("../../helpers/jwt"),
+  { comparePasswords } = require("../../helpers/bcrypt");
 
 const userEmailAuth = async (req, res) => {
   const hashedPassword = await getPassword(req.body.emailid, req.body.isocode);

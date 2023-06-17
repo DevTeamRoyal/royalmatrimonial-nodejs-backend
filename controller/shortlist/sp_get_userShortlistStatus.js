@@ -1,12 +1,8 @@
-const { executeStoredProcedure } = require("../helpers/storedProcedure");
+const { executeStoredProcedure } = require("../../helpers/storedProcedure");
 
-const setUserBlock = (req, res) => {
-  const values = [
-    req.body.userId,
-    req.body.userIdToBlock,
-    req.body.status,
-  ];
-  executeStoredProcedure("sp_set_blockUser", [values]).then(
+const userShortlistStatus = (req, res) => {
+  const values = [req.body.userId, req.body.useridShortlist];
+  executeStoredProcedure("sp_get_userShortlistStatus", [values]).then(
     (result) => {
       if (result["0"]["output"] < 0) {
         res.json(result);
@@ -25,4 +21,4 @@ const setUserBlock = (req, res) => {
   );
 };
 
-module.exports = setUserBlock;
+module.exports = userShortlistStatus;

@@ -1,5 +1,5 @@
-const getClientList = require("../controller/sp_get_clientList_admin");
-const createEmployee = require("../controller/sp_create_empLogin");
+const getClientList = require("../controller/admin/sp_get_clientList_admin");
+const createEmployee = require("../controller/admin/sp_create_empLogin");
 const express = require("express"),
   router = express.Router();
 

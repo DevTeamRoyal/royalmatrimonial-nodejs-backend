@@ -1,6 +1,6 @@
-const { executeStoredProcedure } = require("../helpers/storedProcedure");
-const generateOTP = require("../helpers/generateOtp");
-const sendOtpApi = require("../helpers/sendOtpApi");
+const { executeStoredProcedure } = require("../../helpers/storedProcedure");
+const generateOTP = require("../../helpers/generateOtp");
+const sendOtpApi = require("../../helpers/sendOtpApi");
 
 const createOtp = async (req, res) => {
   const OTP = generateOTP();

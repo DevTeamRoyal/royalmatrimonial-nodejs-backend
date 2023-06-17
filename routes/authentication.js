@@ -1,9 +1,9 @@
-const userSignUpService = require("../controller/sp_create_userLogin");
-const isUserRegistered = require("../controller/sp_get_isUserRegistered");
+const userSignUpService = require("../controller/auth/sp_create_userLogin");
+const isUserRegistered = require("../controller/auth/sp_get_isUserRegistered");
 const {
   userEmailAuth,
   userMobilelAuth,
-} = require("../controller/sp_get_loginAuth");
+} = require("../controller/auth/sp_get_loginAuth");
 const express = require("express"),
   router = express.Router();
 

@@ -1,4 +1,4 @@
-const profileCompletionScore = require("../controller/sp_get_profileCompletionScore");
+const profileCompletionScore = require("../controller/user/sp_get_profileCompletionScore");
 const express = require("express"),
   router = express.Router();
 

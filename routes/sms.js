@@ -1,4 +1,4 @@
-const { createOtp, compareOtp } = require("../controller/sms");
+const { createOtp, compareOtp } = require("../controller/smsEmail/sms");
 const express = require("express"),
   router = express.Router();
 

@@ -1,8 +1,8 @@
-const { executeStoredProcedure } = require("../helpers/storedProcedure");
+const { executeStoredProcedure } = require("../../helpers/storedProcedure");
 
-const createUserStep2 = (req, res) => {
+const createUserStep3 = (req, res) => {
   if (req.body.actionType === "v") {
-    executeStoredProcedure("sp_onPage2View", [req.body.userId]).then(
+    executeStoredProcedure("sp_onPage3View", [req.body.userId]).then(
       (result) => {
         if (result["0"]["output"] < 0) {
           res.json(result);
@@ -23,17 +23,19 @@ const createUserStep2 = (req, res) => {
     const values = [
       req.body.actionType,
       req.body.userId,
-      req.body.country,
-      req.body.state,
-      req.body.city,
-      req.body.education,
-      req.body.occupation,
-      req.body.annualIncome,
-      req.body.residentialStatus,
-      req.body.readyToSettleAbroad,
-      req.body.college,
+      req.body.diet,
+      req.body.smoking,
+      req.body.drinking,
+      req.body.lovePets,
+      req.body.ownsHouse,
+      req.body.ownsCar,
+      req.body.bloodGroup,
+      req.body.thalassemia,
+      req.body.religiousBelief,
+      req.body.cartype,
+      req.body.housetype,
     ];
-    executeStoredProcedure("sp_onPage2", [values]).then((result) => {
+    executeStoredProcedure("sp_onPage3", [values]).then((result) => {
       if (result["0"]["output"] < 0) {
         res.json(result);
       } else {
@@ -51,4 +53,4 @@ const createUserStep2 = (req, res) => {
   }
 };
 
-module.exports = createUserStep2;
+module.exports = createUserStep3;

@@ -1,4 +1,4 @@
-const { executeStoredProcedure } = require("../helpers/storedProcedure");
+const { executeStoredProcedure } = require("../../helpers/storedProcedure");
 
 const createUserStep5 = (req, res) => {
   if (req.body.actionType === "v") {

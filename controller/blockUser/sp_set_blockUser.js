@@ -1,14 +1,12 @@
-const { executeStoredProcedure } = require("../helpers/storedProcedure");
+const { executeStoredProcedure } = require("../../helpers/storedProcedure");
 
-const getStrictMatchMaking = (req, res) => {
+const setUserBlock = (req, res) => {
   const values = [
     req.body.userId,
-    req.body.maxUserId,
-    req.body.limit,
-    req.body.viceVersa,
-    req.body.excludeUsers,
+    req.body.userIdToBlock,
+    req.body.status,
   ];
-  executeStoredProcedure("sp_get_strictFieldsMatchMaking", [values]).then(
+  executeStoredProcedure("sp_set_blockUser", [values]).then(
     (result) => {
       if (result["0"]["output"] < 0) {
         res.json(result);
@@ -27,4 +25,4 @@ const getStrictMatchMaking = (req, res) => {
   );
 };
 
-module.exports = getStrictMatchMaking;
+module.exports = setUserBlock;

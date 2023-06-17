@@ -1,6 +1,6 @@
-const { executeStoredProcedure } = require("../helpers/storedProcedure"),
-  { createToken, verifyToken } = require("../helpers/jwt"),
-  { generateHashPwd, checkHashPwd } = require("../helpers/bcrypt");
+const { executeStoredProcedure } = require("../../helpers/storedProcedure"),
+  { createToken, verifyToken } = require("../../helpers/jwt"),
+  { generateHashPwd, checkHashPwd } = require("../../helpers/bcrypt");
 
 const userSignUp = (req, res) => {
   const hashedPwd = generateHashPwd(req.body.password);

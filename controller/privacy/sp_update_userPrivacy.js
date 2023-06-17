@@ -1,14 +1,13 @@
-const { executeStoredProcedure } = require("../helpers/storedProcedure");
+const { executeStoredProcedure } = require("../../helpers/storedProcedure");
 
-const getAllMatchMaking = (req, res) => {
+const updateUserPrivacy = (req, res) => {
   const values = [
     req.body.userId,
-    req.body.maxUserId,
-    req.body.limit,
-    req.body.viceVersa,
-    req.body.excludedUsers,
+    req.body.showPhoto,
+    req.body.showContact,
+    req.body.showName,
   ];
-  executeStoredProcedure("sp_get_allMatchMaking", [values]).then((result) => {
+  executeStoredProcedure("sp_update_userPrivacy", [values]).then((result) => {
     if (result["0"]["output"] < 0) {
       res.json(result);
     } else {
@@ -25,4 +24,4 @@ const getAllMatchMaking = (req, res) => {
   });
 };
 
-module.exports = getAllMatchMaking;
+module.exports = updateUserPrivacy;

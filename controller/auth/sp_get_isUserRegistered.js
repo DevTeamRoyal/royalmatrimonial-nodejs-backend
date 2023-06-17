@@ -1,4 +1,4 @@
-const { executeStoredProcedure } = require("../helpers/storedProcedure");
+const { executeStoredProcedure } = require("../../helpers/storedProcedure");
 
 const isUserRegistered = (req, res) => {
   const countryCode = req.body.countryCode.replace("+", "");

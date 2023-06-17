@@ -1,8 +1,8 @@
-const { executeStoredProcedure } = require("../helpers/storedProcedure");
+const { executeStoredProcedure } = require("../../helpers/storedProcedure");
 
-const createPartnerPref = (req, res) => {
+const createUserStep2 = (req, res) => {
   if (req.body.actionType === "v") {
-    executeStoredProcedure("sp_onPagePartnerPrefView", [req.body.userId]).then(
+    executeStoredProcedure("sp_onPage2View", [req.body.userId]).then(
       (result) => {
         if (result["0"]["output"] < 0) {
           res.json(result);
@@ -23,33 +23,17 @@ const createPartnerPref = (req, res) => {
     const values = [
       req.body.actionType,
       req.body.userId,
-      req.body.ageGreaterThan,
-      req.body.ageLessThan,
-      req.body.heightGreaterThan,
-      req.body.heightLessThan,
       req.body.country,
       req.body.state,
       req.body.city,
       req.body.education,
       req.body.occupation,
-      req.body.annualIncomeGreaterThan,
-      req.body.maritalStatus,
-      req.body.religion,
-      req.body.motherTongue,
-      req.body.cast,
+      req.body.annualIncome,
       req.body.residentialStatus,
-      req.body.manglik,
-      req.body.diet,
-      req.body.smoking,
-      req.body.drinking,
       req.body.readyToSettleAbroad,
-      req.body.challenged,
-      req.body.childrenStatus,
-      req.body.hiv,
-      req.body.horoscopeMatch,
-      req.body.mandatoryFields,
+      req.body.college,
     ];
-    executeStoredProcedure("sp_onPagePartnerPref", [values]).then((result) => {
+    executeStoredProcedure("sp_onPage2", [values]).then((result) => {
       if (result["0"]["output"] < 0) {
         res.json(result);
       } else {
@@ -67,4 +51,4 @@ const createPartnerPref = (req, res) => {
   }
 };
 
-module.exports = createPartnerPref;
+module.exports = createUserStep2;

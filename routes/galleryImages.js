@@ -1,7 +1,7 @@
 const upload = require("../helpers/multer");
-const setGalleryImages = require("../controller/setGalleryImages");
-const setCoverImage = require("../controller/setCoverImage");
-const getUserImages = require("../controller/getUserImages");
+const setGalleryImages = require("../controller/file/setGalleryImages");
+const setCoverImage = require("../controller/file/setCoverImage");
+const getUserImages = require("../controller/file/getUserImages");
 
 const express = require("express"),
   router = express.Router();

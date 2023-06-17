@@ -1,8 +1,8 @@
-const { executeStoredProcedure } = require("../helpers/storedProcedure");
+const { executeStoredProcedure } = require("../../helpers/storedProcedure");
 
-const getClientList = (req, res) => {
-  const values = [req.body.fromDate, req.body.toDate];
-  executeStoredProcedure("sp_get_clientList", [values]).then((result) => {
+const getUserShortlist = (req, res) => {
+  const values = [req.body.userId];
+  executeStoredProcedure("sp_get_userShortlist", [values]).then((result) => {
     if (result["0"]["output"] < 0) {
       res.json(result);
     } else {
@@ -19,4 +19,4 @@ const getClientList = (req, res) => {
   });
 };
 
-module.exports = getClientList;
+module.exports = getUserShortlist;

@@ -1,4 +1,4 @@
-const { executeStoredProcedure } = require("../helpers/storedProcedure");
+const { executeStoredProcedure } = require("../../helpers/storedProcedure");
 
 const getSearchMatchMaking = (req, res) => {
   const values = [
@@ -30,7 +30,7 @@ const getSearchMatchMaking = (req, res) => {
     req.body.maxUserId,
     req.body.limit,
     req.body.viceVersaFlag,
-    req.body.excludeUsers,
+    req.body.excludedUsers,
   ];
   executeStoredProcedure("sp_get_searchMatchMaking", [values]).then(
     (result) => {

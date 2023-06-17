@@ -1,6 +1,6 @@
-const getAllMatchMaking = require("../controller/sp_get_allMatchMaking");
-const getStrictMatchMaking = require("../controller/sp_get_strictFieldsMatchMaking");
-const getSearchMatchMaking = require("../controller/sp_get_searchMatchMaking");
+const getAllMatchMaking = require("../controller/matchmaking/sp_get_allMatchMaking");
+const getStrictMatchMaking = require("../controller/matchmaking/sp_get_strictFieldsMatchMaking");
+const getSearchMatchMaking = require("../controller/matchmaking/sp_get_searchMatchMaking");
 const express = require("express"),
   router = express.Router();
 
