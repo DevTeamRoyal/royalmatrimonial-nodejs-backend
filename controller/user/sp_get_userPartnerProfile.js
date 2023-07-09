@@ -1,8 +1,8 @@
 const { executeStoredProcedure } = require("../../helpers/storedProcedure");
 
-const setUserInterest = (req, res) => {
-  const values = [req.body.fromUserid, req.body.toUserid, req.body.status]; // S:sent,A:accept,D:decline,C:cancel/recall
-  executeStoredProcedure("sp_set_userInterest", [values]).then((result) => {
+const getPartnerDetails = (req, res) => {
+  const values = [req.body.userId, req.body.partnerId];
+  executeStoredProcedure("sp_get_userPartnerProfile", [values]).then((result) => {
     if (result["0"]["output"] < 0) {
       res.json(result);
     } else {
@@ -19,4 +19,4 @@ const setUserInterest = (req, res) => {
   });
 };
 
-module.exports = setUserInterest;
+module.exports = getPartnerDetails;
