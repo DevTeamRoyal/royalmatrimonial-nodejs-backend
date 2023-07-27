@@ -5,7 +5,6 @@ const getUserVisitorListAndCard = (req, res) => {
     req.body.userId,
     req.body.maxVisitorId,
     req.body.limit,
-    req.body.excludedUsers,
   ];
   executeStoredProcedure("sp_get_userVisitorListAndCard", [values]).then((result) => {
     if (result["0"]["output"] < 0) {
