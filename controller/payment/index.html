@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form
+      name="payment_post"
+      id="payment_post"
+      action="https://test.payu.in/_payment"
+      method="post"
+    >
+      <input hidden type="text" name="key" value="3lDAim" /><input
+        hidden
+        type="text"
+        name="txnid"
+        value="ixndfo8kig9mld60wbblijg2"
+      /><input hidden type="text" name="amount" value="10.00" /><input
+        hidden
+        type="text"
+        name="productinfo"
+        value="Silver"
+      /><input hidden type="text" name="firstname" value="PayU User" /><input
+        hidden
+        type="text"
+        name="email"
+        value="test@gmail.com"
+      /><input hidden type="text" name="phone" value="9876543210" /><input
+        hidden
+        type="text"
+        name="lastname"
+        value="Singh"
+      /><input hidden type="text" name="city" value="Mumbai" /><input
+        hidden
+        type="text"
+        name="state"
+        value="Maharashtra"
+      /><input hidden type="text" name="country" value="India" /><input
+        hidden
+        type="text"
+        name="surl"
+        value="http://dev.royalmatrimonial.com/PaymentSuccess"
+      /><input
+        hidden
+        type="text"
+        name="furl"
+        value="http://dev.royalmatrimonial.com/PaymentFailure"
+      /><input
+        hidden
+        type="text"
+        name="hash"
+        value="f936c90d4dd60fa849eaa8833de6bcee65322cdb2c0abfd6da09990acebe0ce4f272327ee9812f3b31ac7617c9526131801612dbdb418b8fb6a6deca141260f2"
+      />
+    </form>
+    <script type="text/javascript">
+      window.onload = function () {
+        document.forms["payment_post"].submit();
+      };
+    </script>
+  </body>
+</html>
