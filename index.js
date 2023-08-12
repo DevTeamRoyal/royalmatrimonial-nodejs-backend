@@ -21,6 +21,7 @@ const blockUser = require("./routes/blockUser");
 const shortlist = require("./routes/shortlist");
 const interestList = require("./routes/interestList");
 const payment = require("./routes/payment");
+const search = require("./routes/search");
 
 //Middleware configs
 app.use(
@@ -54,6 +55,7 @@ app.use("/api/userDetails", userDetails);
 app.use("/api/blockUser", blockUser);
 app.use("/api/shortlist", shortlist);
 app.use("/api/interestList", interestList);
+app.use("/api/search", search);
 app.use("/api/payment", payment);
 
 // make server object that contain port property and the value for our server.
