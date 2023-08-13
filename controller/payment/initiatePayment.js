@@ -27,7 +27,7 @@ const initiatePayment = (req, res) => {
     error: null,
     errorMessage: null
   }
-  createTransaction(preTransactionData);
+  createTransaction(preTransactionData, res);
   const paymentPayload = {
     key: process.env.PAYU_KEY,
     txnid: createId(),
