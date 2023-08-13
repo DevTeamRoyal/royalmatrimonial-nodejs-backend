@@ -1,8 +1,33 @@
 const payuClient = require("../../helpers/payuConfig");
 const { createId } = require("@paralleldrive/cuid2");
 const crypto = require('crypto');
+const getCurrentDateTimeFormatted = require('../../helpers/getDate');
+const createTransaction = require('./sp_create_txnEntry')
 
 const initiatePayment = (req, res) => {
+  const preTransactionData = {
+    userId: req.body.userId,
+    txnid: createId(),
+    status: 'INIT',
+    productinfo: null,
+    mihpayid: null,
+    mode: null,
+    unmappedstatus: null,
+    key: null,
+    amount: req.body.amount,
+    discount: null,
+    netAmountDebit: null,
+    addedon: getCurrentDateTimeFormatted(),
+    field9: null,
+    paymentSource: null,
+    meCode: null,
+    PGTYPE: null,
+    bankRefNum: null,
+    bankcode: null,
+    error: null,
+    errorMessage: null
+  }
+  createTransaction(preTransactionData);
   const paymentPayload = {
     key: process.env.PAYU_KEY,
     txnid: createId(),
@@ -12,11 +37,8 @@ const initiatePayment = (req, res) => {
     email: req.body.email,
     phone: req.body.phone,
     lastname: req.body.lastname,
-    city: req.body.city,
-    state: req.body.state,
-    country: req.body.country,
-    surl: "http://dev.royalmatrimonial.com/PaymentSuccess",
-    furl: "http://dev.royalmatrimonial.com/PaymentFailure",
+    surl: process.env.ENV === "STAGE" ? "http://localhost:3000/PaymentSuccess" : "http://dev.royalmatrimonial.com/PaymentSuccess",
+    furl: process.env.ENV === "STAGE" ? "http://localhost:3000/PaymentFailure" : "http://dev.royalmatrimonial.com/PaymentFailure",
     hash: crypto.createHash('sha512').update(`${process.env.PAYU_KEY}|${this.txnid}`).digest('hex'),
   };
   try {
