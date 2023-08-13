@@ -9,7 +9,7 @@ const initiatePayment = (req, res) => {
     userId: req.body.userId,
     txnid: createId(),
     status: 'INIT',
-    productinfo: null,
+    productinfo: req.body.productinfo,
     mihpayid: null,
     mode: null,
     unmappedstatus: null,
