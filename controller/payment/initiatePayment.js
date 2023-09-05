@@ -37,8 +37,8 @@ const initiatePayment = (req, res) => {
     email: req.body.email,
     phone: req.body.phone,
     lastname: req.body.lastname,
-    surl: process.env.ENV === "STAGE" ? "http://localhost:3000/PaymentSuccess" : "http://dev.royalmatrimonial.com/PaymentSuccess",
-    furl: process.env.ENV === "STAGE" ? "http://localhost:3000/PaymentFailure" : "http://dev.royalmatrimonial.com/PaymentFailure",
+    surl: "http://dev.royalmatrimonial.com/PaymentSuccess",
+    furl: "http://dev.royalmatrimonial.com/PaymentFailure",
     hash: crypto.createHash('sha512').update(`${process.env.PAYU_KEY}|${this.txnid}`).digest('hex'),
   };
   try {
