@@ -2,23 +2,28 @@ const { executeStoredProcedure } = require("../../helpers/storedProcedure");
 
 const updateAdminEventList = (req, res) => {
   const values = [
-    req.body.eventId,              // INT -> eventId
-    req.body.eventType,            // char(1) -> eventType
-    req.body.eventReligion,        // int -> eventReligion
-    req.body.eventOccupation,      // tinyint -> eventOccupation
-    req.body.eventMaritalStatus,   // tinyint -> eventMaritalStatus
-    req.body.eventCaste,           // int -> eventCaste
-    req.body.eventCountry,         // int -> eventCountry
-    req.body.eventState,           // int -> eventState
-    req.body.eventCity,            // int -> eventCity
-    req.body.eventAmount,          // int -> eventAmount
-    req.body.eventDatetime,        // datetime -> eventDatetime
-    req.body.eventStatus,          // char(1) -> eventStatus
-    req.body.eventVenue,           // varchar(50) -> eventVenue
-    req.body.eventOnlineLink,      // varchar(500) -> eventOnlineLink
-    req.body.eventDescription      // varchar(500) -> eventDescription
+    req.body.eventId,
+    req.body.eventType,
+    req.body.eventTitle,
+    req.body.eventReligion,
+    req.body.eventOccupation,
+    req.body.eventMaritalStatus,
+    req.body.eventCaste,
+    req.body.eventCountry,
+    req.body.eventState,
+    req.body.eventCity,
+    req.body.eventAmount,
+    req.body.eventDatetime,
+    req.body.eventStatus,
+    req.body.eventVenue,
+    req.body.eventOnlineLink,
+    req.body.eventMaxGuestsAllowed,
+    req.body.eventExtraGuestPrice,
+    req.body.eventMaxGuestsPerProfile,
+    req.body.eventCancellationAllowedDays,
+    req.body.eventCancellationCut,
+    req.body.eventDescription
 ];
-
 
   executeStoredProcedure("sp_update_adminEvent", [values]).then((result) => {
     if (result["0"]["output"] < 0) {

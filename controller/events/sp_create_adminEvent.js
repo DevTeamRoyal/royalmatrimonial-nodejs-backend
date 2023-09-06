@@ -2,7 +2,8 @@ const { executeStoredProcedure } = require("../../helpers/storedProcedure");
 
 const createAdminEvent = (req, res) => {
   const values = [
-    req.body.eventType, // char(1) -> eventType
+    req.body.eventType, // char(1) -> eventType -- P -Physical ; O- Online
+    req.body.eventTitle, // varchar(30)
     req.body.eventReligion, // int -> eventReligion
     req.body.eventOccupation, // tinyint -> eventOccupation
     req.body.eventMaritalStatus, // tinyint -> eventMaritalStatus
@@ -12,15 +13,15 @@ const createAdminEvent = (req, res) => {
     req.body.eventCity, // int -> eventCity
     req.body.eventAmount, // int -> eventAmount
     req.body.eventDatetime, // datetime -> eventDatetime
-    req.body.eventStatus, // char(1) -> eventStatus A / I
-    req.body.eventVenue, // varchar(50) -> eventVenue
-    req.body.eventOnlineLink, // varchar(500) -> eventOnlineLink
-    req.body.eventDescription, // varchar(500) -> eventDescription
-    req.body.eventMaxGuestsAllowed, // INT
-    req.body.eventExtraGuestPrice, // INT
-    req.body.eventMaxGuestsPerProfile, // INT
+    req.body.eventStatus, // char(1) ->  -- A: active , I - Inactive , C-  cancelled
+    req.body.eventVenue, // varchar(50) -> eventVenue Address of hotel,auditorium
+    req.body.eventOnlineLink, // varchar(500) -> eventOnlineLink zoom link , meeting link
+    req.body.eventDescription, // varchar(500) -> eventDescription free text
+    req.body.eventMaxGuestsAllowed, // INT 1000
+    req.body.eventExtraGuestPrice, // INT 500   
+    req.body.eventMaxGuestsPerProfile, // INT 7
     req.body.eventCancellationAllowedDays, // INT
-    req.body.eventCancellationCut, // INT
+    req.body.eventCancellationCut, // INT 50
   ];
 
   executeStoredProcedure("sp_create_adminEvent", [values]).then((result) => {
