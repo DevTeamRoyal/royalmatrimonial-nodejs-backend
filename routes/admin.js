@@ -16,19 +16,19 @@ router.post("/createEmployee", (req, res) => {
   createEmployee(req, res);
 });
 
-router.get("/createAdminEvent", (req, res) => {
+router.post("/createAdminEvent", (req, res) => {
   createAdminEvent(req, res);
 });
 
-router.get("/updateAdminEventList", (req, res) => {
+router.post("/updateAdminEventList", (req, res) => {
   updateAdminEventList(req, res);
 });
 
-router.get("/getAdminEventList", (req, res) => {
+router.post("/getAdminEventList", (req, res) => {
   getAdminEventList(req, res);
 });
 
-router.get("/getAdminEventDetails", (req, res) => {
+router.post("/getAdminEventDetails", (req, res) => {
   getAdminEventDetails(req, res);
 });
 
