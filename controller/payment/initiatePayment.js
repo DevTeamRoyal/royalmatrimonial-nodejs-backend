@@ -37,9 +37,9 @@ const initiatePayment = (req, res) => {
     email: req.body.email,
     phone: req.body.phone,
     lastname: req.body.lastname,
-    surl: "http://dev.royalmatrimonial.com/PaymentSuccess",
-    furl: "http://dev.royalmatrimonial.com/PaymentFailure",
-    hash: crypto.createHash('sha512').update(`${process.env.PAYU_KEY}|${this.txnid}`).digest('hex'),
+    surl: "http://dev.royalmatrimonial.com/PaymentSuccess", // verify payment
+    furl: "http://dev.royalmatrimonial.com/PaymentFailure",  // verify payment
+    hash: crypto.createHash('sha512').update(`${process.env.PAYU_KEY}|${this.txnid}`).digest('hex'), // pass firstname, lastname, amount, mobile
   };
   try {
     const result = payuClient.paymentInitiate(paymentPayload);
@@ -49,6 +49,7 @@ const initiatePayment = (req, res) => {
       status: 200,
     });
     console.log(result);
+    //VERIFY PAYMENT FUNCTION
   } catch (error) {
     console.log(error);
     throw error;
