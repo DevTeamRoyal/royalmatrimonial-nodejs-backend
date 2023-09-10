@@ -37,8 +37,8 @@ const initiatePayment = (req, res) => {
     email: req.body.email,
     phone: req.body.phone,
     lastname: req.body.lastname,
-    surl: "http://dev.royalmatrimonial.com/PaymentSuccess", // verify payment
-    furl: "http://dev.royalmatrimonial.com/PaymentFailure",  // verify payment
+    surl: "http://dev.royalmatrimonial.com/Checkout#PaymentSuccess", // verify payment
+    furl: "http://dev.royalmatrimonial.com/Checkout#PaymentFailure",  // verify payment
     hash: crypto.createHash('sha512').update(`${process.env.PAYU_KEY}|${this.txnid}`).digest('hex'), // pass firstname, lastname, amount, mobile
   };
   try {
