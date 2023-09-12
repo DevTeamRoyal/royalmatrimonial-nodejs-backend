@@ -1,4 +1,4 @@
-const { createOtp, compareOtp } = require("../controller/smsEmail/sms");
+const { createOtp, compareOtp, compareOtpForgetPassword } = require("../controller/smsEmail/sms");
 const express = require("express"),
   router = express.Router();
 
@@ -7,6 +7,9 @@ router.post("/send-otp", (req, res) => {
 });
 router.post("/verify-otp", (req, res) => {
   compareOtp(req, res);
+});
+router.post("/forgetPwd-verify-otp", (req, res) => {
+  compareOtpForgetPassword(req, res);
 });
 
 module.exports = router;

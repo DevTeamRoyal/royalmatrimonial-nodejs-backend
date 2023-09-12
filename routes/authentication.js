@@ -1,5 +1,6 @@
 const userSignUpService = require("../controller/auth/sp_create_userLogin");
 const isUserRegistered = require("../controller/auth/sp_get_isUserRegistered");
+const updateUserField = require("../controller/auth/sp_update_userField");
 const {
   userEmailAuth,
   userMobilelAuth,
@@ -20,5 +21,7 @@ router.post("/signInEmail", (req, res) => {
 router.post("/signInMobile", (req, res) => {
   userMobilelAuth(req, res);
 });
-
+router.post("/updateUserField", (req, res) => {
+  updateUserField(req, res);
+});
 module.exports = router;

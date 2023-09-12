@@ -61,7 +61,6 @@ app.use("/api/search", search);
 app.use("/api/payment", payment);
 app.use("/api/packages", packages);
 app.use("/api/events", events);
-
 // make server object that contain port property and the value for our server.
 const server = {
   port: process.env.SERVER_PORT,

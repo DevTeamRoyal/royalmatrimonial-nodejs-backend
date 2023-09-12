@@ -1,6 +1,7 @@
 const { executeStoredProcedure } = require("../../helpers/storedProcedure");
 const generateOTP = require("../../helpers/generateOtp");
 const sendOtpApi = require("../../helpers/sendOtpApi");
+const { createTokenForgetPwd } = require("../../helpers/jwt");
 
 const createOtp = async (req, res) => {
   const OTP = generateOTP();
@@ -46,4 +47,24 @@ const compareOtp = (req, res) => {
     }
   });
 };
-module.exports = { createOtp, compareOtp };
+
+const compareOtpForgetPassword = (req, res) => {
+  const values = [req.body.isdMobile, req.body.otp, req.body.otpScope];
+  executeStoredProcedure("sp_compare_otp", [values]).then((result) => {
+    if (result["0"]["output"] < 0) {
+      res.send(result[0]);
+    } else {
+      try {
+        res.json({
+          ...result["0"],
+          jsonResponse: JSON.parse(result["0"].jsonResponse),
+          status: 200,
+          token: createTokenForgetPwd({ userId: req.body.userId }),
+        });
+      } catch (error) {
+        throw error;
+      }
+    }
+  });
+};
+module.exports = { createOtp, compareOtp, compareOtpForgetPassword };
