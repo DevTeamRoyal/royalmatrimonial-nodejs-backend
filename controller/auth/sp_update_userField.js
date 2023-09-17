@@ -2,10 +2,14 @@ const { executeStoredProcedure } = require("../../helpers/storedProcedure");
 const { verifyToken } = require("../../helpers/jwt");
 
 const updateUserField = (req, res) => {
-  const values = [req.body.userId, req.body.fieldName, req.body.valueString];
+  let hashedPwd;
   const isTokenVerify = verifyToken(req.body.token);
+  const values = [req.body.userId, req.body.fieldName];
   if (isTokenVerify) {
-    executeStoredProcedure("sp_update_userField", [values]).then((result) => {
+    if(req.body.fieldName === 'password'){
+      hashedPwd = generateHashPwd(req.body.valueString);
+    }
+    executeStoredProcedure("sp_update_userField", [...values, hashedPwd]).then((result) => {
       if (result["0"]["output"] < 0) {
         res.json({ ...result["0"] });
       } else {
@@ -13,8 +17,9 @@ const updateUserField = (req, res) => {
           res.json({
             ...result["0"],
             status: 200,
-            jsonResponse: JSON.parse(result["0"].jsonResponse),
-            token: result["0"].jsonResponse ? token : null,
+            jsonResponse: JSON.parse(
+              result["0"].jsonResponse ?? { msg: "Password updated" }
+            ),
           });
         } catch (error) {
           throw error;
