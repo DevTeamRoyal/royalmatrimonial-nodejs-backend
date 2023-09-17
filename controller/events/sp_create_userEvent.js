@@ -1,6 +1,6 @@
 const { executeStoredProcedure } = require("../../helpers/storedProcedure");
 
-const createAdminEvent = (req, res) => {
+const createUserEvent = (req, res) => {
   const values = [
     req.body.eventID,         // INT
     req.body.userId,          // INT
@@ -25,4 +25,4 @@ const createAdminEvent = (req, res) => {
   });
 };
 
-module.exports = createAdminEvent;
+module.exports = createUserEvent;
