@@ -1,5 +1,6 @@
 const { executeStoredProcedure } = require("../../helpers/storedProcedure");
 const { verifyToken } = require("../../helpers/jwt");
+const { generateHashPwd } = require("../../helpers/bcrypt");
 
 const updateUserField = (req, res) => {
   let hashedPwd;
