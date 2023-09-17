@@ -92,4 +92,4 @@ const compareOtpForgetPassword = (req, res) => {
     }
   });
 };
-module.exports = { createOtp, compareOtp, compareOtpForgetPassword };
+module.exports = { createOtp, compareOtp, compareOtpForgetPassword, createOtpForgetPassword };
