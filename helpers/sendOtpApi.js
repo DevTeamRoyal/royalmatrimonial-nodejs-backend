@@ -23,7 +23,7 @@ const sendForgotPwdOtpApi = async (isdMobile, OTP) => {
   const password = "rzee7118RZ";
   const senderId = "royalM";
   const onlyMobileNo = isdMobile.substring(2);
-  const msg = `OTP to reset password is ${OTP}. royalM`;
+  const msg = `OTP to reset password is ${OTP}. OTP is valid for 15 minutes. royalM`;
   const entityID = "1701158080483210201";
   templateId = "1707168253161399892";
 
