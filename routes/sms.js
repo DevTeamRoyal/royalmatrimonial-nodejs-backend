@@ -11,7 +11,4 @@ router.post("/verify-otp", (req, res) => {
 router.post("/forgetPwd-verify-otp", (req, res) => {
   compareOtpForgetPassword(req, res);
 });
-router.post("/send-otp-forgetPwd", (req, res) => {
-  createOtpForgetPassword(req, res);
-});
 module.exports = router;
