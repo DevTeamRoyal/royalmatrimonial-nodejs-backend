@@ -18,9 +18,7 @@ const updateUserField = (req, res) => {
           res.json({
             ...result["0"],
             status: 200,
-            jsonResponse: JSON.parse(
-              result["0"].jsonResponse ?? { msg: "Password updated" }
-            ),
+            jsonResponse: { msg: "Password updated" }
           });
         } catch (error) {
           throw error;
