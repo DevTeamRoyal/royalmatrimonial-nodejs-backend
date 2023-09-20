@@ -28,4 +28,7 @@ router.post("/isMobileRegistered", (req, res) => {
 router.post("/updateUserField", (req, res) => {
   updateUserField(req, res);
 });
+router.post("/updateUserFieldWithoutToken", (req, res) => {
+  updateUserFieldWithoutToken(req, res);
+});
 module.exports = router;
