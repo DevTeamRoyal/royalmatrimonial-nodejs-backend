@@ -14,26 +14,26 @@ const createOtp = async (req, res) => {
   // if(req.body.otpScope === 'F'){
   //   smsOtpResponse = await sendForgotPwdOtpApi(req.body.isdMobile, OTP);
   // }
-  if (smsOtpResponse.Status === "OK") {
-    executeStoredProcedure("sp_create_otp", [values]).then((result) => {
-      if (result["0"]["output"] < 0) {
-        res.json(result);
-      } else {
-        try {
-          res.json({
-            ...result["0"],
-            jsonResponse: JSON.parse(result["0"].jsonResponse),
-            otp: OTP,
-            status: 200,
-          });
-        } catch (error) {
-          throw error;
-        }
+  // if (smsOtpResponse.Status === "OK") {
+  executeStoredProcedure("sp_create_otp", [values]).then((result) => {
+    if (result["0"]["output"] < 0) {
+      res.json(result);
+    } else {
+      try {
+        res.json({
+          ...result["0"],
+          jsonResponse: JSON.parse(result["0"].jsonResponse),
+          otp: OTP,
+          status: 200,
+        });
+      } catch (error) {
+        throw error;
       }
-    });
-  } else {
-    res.send(smsOtpResponse);
-  }
+    }
+  });
+  // } else {
+  //   res.send(smsOtpResponse);
+  // }
 };
 
 const compareOtp = (req, res) => {
