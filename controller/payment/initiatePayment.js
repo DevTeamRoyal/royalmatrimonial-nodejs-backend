@@ -1,45 +1,38 @@
 const payuClient = require("../../helpers/payuConfig");
 const { createId } = require("@paralleldrive/cuid2");
-const crypto = require('crypto');
-const getCurrentDateTimeFormatted = require('../../helpers/getDate');
-const createTransaction = require('./sp_create_txnEntry')
+const crypto = require("crypto");
+const createTransaction = require("./sp_create_txnEntry");
+const updateTransaction = require("./sp_update_txnEntry");
+const { default: axios } = require("axios");
 
-const initiatePayment = (req, res) => {
-  const preTransactionData = {
+const initiatePayment = async (req, res) => {
+  const txnId = createId();
+  const hashSalt = crypto
+    .createHash("sha512")
+    .update(`${process.env.PAYU_KEY}|${txnId}`)
+    .digest("hex");
+  let preTransactionData = {
     userId: req.body.userId,
-    txnid: createId(),
-    status: 'INIT',
-    productinfo: req.body.productinfo,
-    mihpayid: null,
-    mode: null,
-    unmappedstatus: null,
-    key: null,
+    txnid: txnId,
+    status: "INIT",
     amount: req.body.amount,
-    discount: null,
-    netAmountDebit: null,
-    addedon: getCurrentDateTimeFormatted(),
-    field9: null,
-    paymentSource: null,
-    meCode: null,
-    PGTYPE: null,
-    bankRefNum: null,
-    bankcode: null,
-    error: null,
-    errorMessage: null
-  }
+    prodType: req.body.prodType, // p or E
+    prodId: req.body.prodId, // packageID, eventID
+    prodIDdays: req.body.prodIDdays, // package days; send -1 incase of event
+  };
   createTransaction(preTransactionData, res);
   const paymentPayload = {
     key: process.env.PAYU_KEY,
-    txnid: createId(),
+    txnid: txnId,
     amount: req.body.amount,
     productinfo: req.body.productinfo,
     firstname: req.body.firstname,
     email: req.body.email,
     phone: req.body.phone,
     lastname: req.body.lastname,
-    surl: "http://dev.royalmatrimonial.com/Checkout#PaymentSuccess", // verify payment
-    furl: "http://dev.royalmatrimonial.com/Checkout#PaymentFailure",  // verify payment
-    hash: crypto.createHash('sha512').update(`${process.env.PAYU_KEY}|${this.txnid}`).digest('hex'), // pass firstname, lastname, amount, mobile
+    surl: "http://dev.royalmatrimonial.com/Checkout#PaymentSuccess", // success payment
+    furl: "http://dev.royalmatrimonial.com/Checkout#PaymentFailure", // failure payment
+    hash: hashSalt,
   };
   try {
     const result = payuClient.paymentInitiate(paymentPayload);
@@ -48,8 +41,18 @@ const initiatePayment = (req, res) => {
       jsonResponse: result,
       status: 200,
     });
-    console.log(result);
     //VERIFY PAYMENT FUNCTION
+    const verificationRequestParams = {
+      key: process.env.PAYU_KEY,
+      command: "verify_payment",
+      var1: createId(),
+      hash: hashSalt,
+    };
+    const verifyResponse = await axios.post(process.env.VERIFY_PAYMENT_TEST, {
+      "Content-Type": "application/x-www-form-urlencoded",
+      verificationRequestParams,
+    });
+    // updateTransaction();
   } catch (error) {
     console.log(error);
     throw error;
