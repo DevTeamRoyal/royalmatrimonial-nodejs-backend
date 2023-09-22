@@ -8,12 +8,12 @@ const createOtp = async (req, res) => {
   const OTP = generateOTP();
   const otpStatus = "A";
   const values = [req.body.isdMobile, OTP, req.body.otpScope, otpStatus];
-  if(req.body.otpScope === 'R'){
-    smsOtpResponse = await sendOtpApi(req.body.isdMobile, OTP);
-  }
-  if(req.body.otpScope === 'F'){
-    smsOtpResponse = await sendForgotPwdOtpApi(req.body.isdMobile, OTP);
-  }
+  // if(req.body.otpScope === 'R'){
+  //   smsOtpResponse = await sendOtpApi(req.body.isdMobile, OTP);
+  // }
+  // if(req.body.otpScope === 'F'){
+  //   smsOtpResponse = await sendForgotPwdOtpApi(req.body.isdMobile, OTP);
+  // }
   if (smsOtpResponse.Status === "OK") {
     executeStoredProcedure("sp_create_otp", [values]).then((result) => {
       if (result["0"]["output"] < 0) {
@@ -23,6 +23,7 @@ const createOtp = async (req, res) => {
           res.json({
             ...result["0"],
             jsonResponse: JSON.parse(result["0"].jsonResponse),
+            otp: OTP,
             status: 200,
           });
         } catch (error) {
