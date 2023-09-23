@@ -3,7 +3,7 @@ const { executeStoredProcedure } = require("../../helpers/storedProcedure");
 const getUserEventList = (req, res) => {
   const values = [
     req.body.userId,         // INT
-    req.body.eventStatus,    // I:Interested; S: Start Payment,P:Purchased,F:Payment Failed, A:Attended,N:Not Attended,C: Raised Cancellation,R:Refunded 
+    JSON.stringify(req.body.eventStatus),    // I:Interested; S: Start Payment,P:Purchased,F:Payment Failed, A:Attended,N:Not Attended,C: Raised Cancellation,R:Refunded 
   ];
 
   executeStoredProcedure("sp_get_userEventList", [values]).then((result) => {
